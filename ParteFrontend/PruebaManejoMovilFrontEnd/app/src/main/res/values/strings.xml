@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Prueba Manejo Móvil</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Propiedades</string>
+    <string name="loginFB">Entrar con Facebook</string>
+    <string name="loginTW">Entrar con Twitter</string>
+    <string name="logo">Logo PMM</string>
+    <string name="title_activity_inicio">Prueba Manejo Móvil</string>
+
+</resources>
