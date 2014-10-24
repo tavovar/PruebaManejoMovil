@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/logoImageView"
         android:contentDescription="@string/logo"
-        android:src="@drawable/ic_launcher"
+        android:src="@drawable/logo"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp" />
