@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 
+var lugares = require('./WebServiceLugares.js');
+var preguntas = require('./WebServicePreguntas.js');
+
 var express = require("express"),
         app = express(),
         bodyParser = require("body-parser"),
@@ -16,13 +19,8 @@ app.use(methodOverride());
 
 var router = express.Router();
 
-router.get('/app/preguntas', function (req, res) {
-    res.send("Hello World!");
-});
-
-router.get('/app/lugares', function (req, res) {
-    res.send("Hello World!");
-});
+router.get('/app/preguntas', preguntas.ObtenerPreguntasTeoricas);
+router.get('/app/lugares', lugares.ObtenerLugaresSucursales);
 
 app.use(router);
 
