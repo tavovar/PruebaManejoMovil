@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+
 AdminPreguntas = function () {
     var conexionPreguntas = require('../Datos/ConexionPreguntas.js');
     this.ConPreguntas = new conexionPreguntas.ConexionPreguntas();
@@ -18,4 +19,3 @@ AdminPreguntas = function () {
 };
 
 exports.AdminPreguntas = AdminPreguntas;
-

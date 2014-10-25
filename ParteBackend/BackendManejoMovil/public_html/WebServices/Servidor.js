@@ -6,6 +6,10 @@
 
 var lugares = require('./WebServiceLugares.js');
 var preguntas = require('./WebServicePreguntas.js');
+var manuales = require('./WebServiceManual.js');
+var historial = require('./WebServiceHistorial.js');
+
+//var usuario = require('./WebServiceUsuarios.js');
 
 var express = require("express"),
         app = express(),
@@ -21,6 +25,9 @@ var router = express.Router();
 
 router.get('/app/preguntas', preguntas.ObtenerPreguntasTeoricas);
 router.get('/app/lugares', lugares.ObtenerLugaresSucursales);
+router.get('/app/manuales', manuales.ObtenerManuales);
+router.get('/app/historial', historial.ObtenerHistorial);
+
 
 app.use(router);
 
