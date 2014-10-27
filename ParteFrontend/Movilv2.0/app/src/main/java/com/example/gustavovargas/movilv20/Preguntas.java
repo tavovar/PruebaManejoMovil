@@ -4,12 +4,16 @@ package com.example.gustavovargas.movilv20;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.content.Intent;
+import android.widget.Toast;
+
+import com.example.gustavovargas.movilv20.Logica.testTeorico;
 
 
 public class Preguntas extends Activity {
@@ -20,11 +24,6 @@ public class Preguntas extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preguntas);
-        if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }
     }
 
 
@@ -48,27 +47,20 @@ public class Preguntas extends Activity {
     }
 
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_indicaciones_preguntas, container, false);
-            return rootView;
-        }
-    }
-
     public void ingresar(View view){
         Intent intent = new Intent(this, PreguntasTeoricas.class);
         startActivity(intent);
     }
 
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            finish();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
 
 

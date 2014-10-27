@@ -10,4 +10,7 @@ public class Constantes {
     public static int colorBotonCorrecto = 746376764;
     public static int colorBotonIncorrecto = 489349237;
     public static int colorBotonSeleccion = 999999999;
+    public static int tiempoVibracionCorrecto = 100;
+    public static int tiempoVibracionIncorrecto = 100;
+    public static long[] tiempoVibracionAprovado = { 200,200, 200, 200, 200, 200, 400};
 }

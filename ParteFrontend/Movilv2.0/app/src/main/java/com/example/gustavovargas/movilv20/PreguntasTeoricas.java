@@ -1,10 +1,14 @@
 package com.example.gustavovargas.movilv20;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Vibrator;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,7 +32,15 @@ public class PreguntasTeoricas extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preguntas_teoricas);
-        test = new testTeorico();
+        test = testTeorico.getInstance();
+        ((TextView) findViewById(R.id.lbl_numeroPregunta)).setText((test.preguntaActual+1)+"");
+        ((TextView) findViewById(R.id.lbl_pregunta)).setText("");
+        ((Button) findViewById(R.id.btn_respuesta1)).setText("");
+        ((Button) findViewById(R.id.btn_respuesta2)).setText("");
+        ((Button) findViewById(R.id.btn_respuesta3)).setText("");
+        ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.estilos);
+        ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.estilos);
+        ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.estilos);
         cargarSiguientePregunta();
     }
 
@@ -53,71 +65,152 @@ public class PreguntasTeoricas extends Activity {
 
     public void respuesta1(View view){
         if(test.revisarRespuesta(0)){
-            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundColor(Constantes.colorBotonCorrecto);
+            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.estilos);
         }else if(test.respuestaCorrecta()==2){
-            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundColor(Constantes.colorBotonCorrecto);
-            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundColor(Constantes.colorBotonIncorrecto);
-            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundColor(Constantes.colorBotonIncorrecto);
+            // Get instance of Vibrator from current Context
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            // Vibrate for 300 milliseconds
+            v.vibrate(Constantes.tiempoVibracionIncorrecto);
+            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.rojo);
+            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.estilos);
+            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.rojo);
         }else{
-            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundColor(Constantes.colorBotonCorrecto);
-            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundColor(Constantes.colorBotonIncorrecto);
-            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundColor(Constantes.colorBotonIncorrecto);
+            // Get instance of Vibrator from current Context
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            // Vibrate for 300 milliseconds
+            v.vibrate(Constantes.tiempoVibracionIncorrecto);
+            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.rojo);
+            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.rojo);
+            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.estilos);
         }
         cargarSiguientePregunta();
     }
 
     public void respuesta2(View view){
         if(test.revisarRespuesta(1)){
-            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundColor(Constantes.colorBotonCorrecto);
+            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.estilos);
         }else if(test.respuestaCorrecta()==1){
-            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundColor(Constantes.colorBotonCorrecto);
-            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundColor(Constantes.colorBotonIncorrecto);
-            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundColor(Constantes.colorBotonIncorrecto);
+            // Get instance of Vibrator from current Context
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            // Vibrate for 300 milliseconds
+            v.vibrate(Constantes.tiempoVibracionIncorrecto);
+            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.rojo);
+            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.estilos);
+            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.rojo);
         }else{
-            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundColor(Constantes.colorBotonCorrecto);
-            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundColor(Constantes.colorBotonIncorrecto);
-            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundColor(Constantes.colorBotonIncorrecto);
+            // Get instance of Vibrator from current Context
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            // Vibrate for 300 milliseconds
+            v.vibrate(Constantes.tiempoVibracionIncorrecto);
+            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.rojo);
+            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.rojo);
+            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.estilos);
         }
-        try {
-            Thread.sleep(500);
-            cargarSiguientePregunta();
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        cargarSiguientePregunta();
     }
 
     public void respuesta3(View view){
         if(test.revisarRespuesta(2)){
-            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundColor(Constantes.colorBotonCorrecto);
+            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.estilos);
         }else if(test.respuestaCorrecta()==1){
-            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundColor(Constantes.colorBotonCorrecto);
-            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundColor(Constantes.colorBotonIncorrecto);
-            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundColor(Constantes.colorBotonIncorrecto);
+            // Get instance of Vibrator from current Context
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            // Vibrate for 300 milliseconds
+            v.vibrate(Constantes.tiempoVibracionIncorrecto);
+            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.rojo);
+            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.rojo);
+            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.estilos);
         }else{
-            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundColor(Constantes.colorBotonCorrecto);
-            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundColor(Constantes.colorBotonIncorrecto);
-            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundColor(Constantes.colorBotonIncorrecto);
+            // Get instance of Vibrator from current Context
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            // Vibrate for 300 milliseconds
+            v.vibrate(Constantes.tiempoVibracionIncorrecto);
+            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.rojo);
+            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.rojo);
+            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.estilos);
         }
         cargarSiguientePregunta();
     }
 
 
     public void cargarSiguientePregunta() {
-        Pregunta pregunta = test.SiguintePregunta();
-        if (pregunta != null) {
-            ((TextView) findViewById(R.id.lbl_numeroPregunta)).setText((test.preguntaActual+1)+"");
-            ((TextView) findViewById(R.id.lbl_pregunta)).setText(pregunta.pregunta);
-            ((Button) findViewById(R.id.btn_respuesta1)).setText(pregunta.respuestas[0].respuesta);
-            ((Button) findViewById(R.id.btn_respuesta2)).setText(pregunta.respuestas[1].respuesta);
-            ((Button) findViewById(R.id.btn_respuesta3)).setText(pregunta.respuestas[2].respuesta);
-            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundColor(Constantes.colorBotonSeleccion);
-            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundColor(Constantes.colorBotonSeleccion);
-            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundColor(Constantes.colorBotonSeleccion);
-        } else {
-            Toast.makeText(getApplicationContext(),
-                    "Test terminado", Toast.LENGTH_SHORT)
-                    .show();
+        // Creating alert Dialog with one Button
+
+        AlertDialog alertDialog1 = new AlertDialog.Builder(this).create();
+
+        // Setting Dialog Title
+        alertDialog1.setTitle(R.string.siguientepregunta);
+
+        // Setting Dialog Message
+        //alertDialog1.setMessage("Welcome to 9Android.net");
+
+        // Setting Icon to Dialog
+        //alertDialog1.setIcon(R.drawable.tick);
+
+        // Setting OK Button
+        alertDialog1.setButton("Siguiente", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+                Pregunta pregunta = test.SiguintePregunta();
+                if (pregunta != null) {
+                    ((TextView) findViewById(R.id.lbl_numeroPregunta)).setText((test.preguntaActual+1)+"");
+                    ((TextView) findViewById(R.id.lbl_pregunta)).setText(pregunta.pregunta);
+                    ((Button) findViewById(R.id.btn_respuesta1)).setText(pregunta.respuestas[0].respuesta);
+                    ((Button) findViewById(R.id.btn_respuesta2)).setText(pregunta.respuestas[1].respuesta);
+                    ((Button) findViewById(R.id.btn_respuesta3)).setText(pregunta.respuestas[2].respuesta);
+                    ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.estilos);
+                    ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.estilos);
+                    ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.estilos);
+                } else {
+                    Intent intent = new Intent(getBaseContext(), ResultadoDeTest.class);
+                    finish();
+                    startActivity(intent);
+                }
+            }
+        });
+        alertDialog1.show();
+    }
+
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            // Esto es lo que hace mi botón al pulsar ir a atrás
+            //Toast.makeText(getApplicationContext(), "Voy hacia atrás!!",Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(this);
+
+                // Setting Dialog Title
+            alertDialog2.setTitle(R.string.advertencia);
+
+                // Setting Dialog Message
+            alertDialog2.setMessage(R.string.mensajeConfirmacion);
+
+                // Setting Icon to Dialog
+            alertDialog2.setIcon(R.drawable.advertencia);
+
+                // Setting Positive "Yes" Btn
+            alertDialog2.setPositiveButton(R.string.si,
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Write your code here to execute after dialog
+                            testTeorico test = testTeorico.getInstance();
+                            test.reiniciarTestTeorico();
+                            finish();
+                        }
+                    });
+                    // Setting Negative "NO" Btn
+            alertDialog2.setNegativeButton(R.string.no,
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    // Showing Alert Dialog
+            alertDialog2.show();
+            return true;
         }
+        return super.onKeyDown(keyCode, event);
     }
 }

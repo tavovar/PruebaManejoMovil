@@ -11,14 +11,23 @@ import com.example.gustavovargas.movilv20.ParseJson.ConexionAPI;
 public class testTeorico {
 
     private Pregunta listaPreguntas[];
-    public int preguntaActual;
+    public int preguntaActual=-1;
     public boolean resultado;
-    private int preguntasCorrectas;
+    public int preguntasCorrectas;
 
-    public testTeorico(){
+    private static testTeorico instance = null;
+
+    public static testTeorico getInstance() {
+        if(instance == null) {
+            instance = new testTeorico();
+        }
+        return instance;
+    }
+
+    protected testTeorico(){
         ConexionAPI test = new ConexionAPI();
         listaPreguntas = test.solicitarPreguntasTeoricas();
-        preguntaActual = 0;
+        preguntaActual = -1;
         resultado = false;
         preguntasCorrectas = 0;
     }
@@ -57,6 +66,14 @@ public class testTeorico {
         }else{
             return 3;
         }
+    }
+
+    public void reiniciarTestTeorico(){
+        ConexionAPI test = new ConexionAPI();
+        listaPreguntas = test.solicitarPreguntasTeoricas();
+        preguntaActual = -1;
+        resultado = false;
+        preguntasCorrectas = 0;
     }
 
 }

@@ -6,7 +6,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.gustavovargas.movilv20.PreguntasTeoricas">
+    tools:context="com.example.gustavovargas.movilv20.PreguntasTeoricas"
+    style="@style/Fondos">
 
 
 
@@ -16,93 +17,117 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/numeroPregunta1"
         android:id="@+id/lbPregunta1"
+        android:textStyle="bold|italic"
+        style="@style/RedText"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignRight="@+id/linearLayout"
+        android:layout_alignEnd="@+id/linearLayout" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="#"
+        android:text="##"
         android:id="@+id/lbl_numeroPregunta"
-        android:layout_toEndOf="@+id/lbPregunta1"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/lbPregunta1"
-        android:layout_marginLeft="31dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/numeroPregunta2"
-        android:id="@+id/lbl_pregunta2"
-        android:layout_toEndOf="@+id/lbl_numeroPregunta"
-        android:layout_marginLeft="57dp"
-        android:layout_above="@+id/lbl_pregunta"
-        android:layout_toRightOf="@+id/lbl_numeroPregunta" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="¿ De qué color es la luz que indica que un vehículo  de debe detener en un semaforoÇ"
-        android:id="@+id/lbl_pregunta"
+        android:textSize="30dp"
+        android:textStyle="bold|italic"
+        style="@style/GreenText"
         android:layout_below="@+id/lbPregunta1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="33dp"
+        android:layout_alignRight="@+id/lbPregunta1"
+        android:layout_alignEnd="@+id/lbPregunta1" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout"
+        android:layout_below="@+id/lbl_numeroPregunta"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/consultarMenu"
-        android:id="@+id/btn_consultarManul"
-        android:layout_alignBottom="@+id/lbl_pregunta"
-        android:textSize="12dp"
-        android:layout_alignRight="@+id/lbl_pregunta"
-        android:layout_alignEnd="@+id/lbl_pregunta"
-        android:layout_toRightOf="@+id/lbl_pregunta2"
-        android:layout_toEndOf="@+id/lbl_pregunta2" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="¿ De qué color es la luz que indica que un vehículo  de debe detener en un semaforo"
+            android:id="@+id/lbl_pregunta"
+            android:layout_below="@+id/lbPregunta1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="33dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            style="@style/CampoTexto"
+            android:textAlignment="center" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Respuesta 1"
-        android:id="@+id/btn_respuesta1"
-        android:layout_below="@+id/btn_consultarManul"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="44dp"
-        android:layout_alignRight="@+id/btn_consultarManul"
-        android:layout_alignEnd="@+id/btn_consultarManul"
-        android:onClick="respuesta1" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Respuesta 2"
-        android:id="@+id/btn_respuesta2"
-        android:layout_below="@+id/btn_respuesta1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="37dp"
-        android:layout_alignRight="@+id/btn_respuesta1"
-        android:layout_alignEnd="@+id/btn_respuesta1"
-        android:onClick="respuesta2" />
+            android:id="@+id/btn_consultarManul"
+            style="@style/BotonesSeleccion"
+            android:layout_alignRight="@+id/lbl_pregunta"
+            android:layout_alignEnd="@+id/lbl_pregunta"
+            android:layout_below="@+id/lbl_pregunta"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/buscar"
+            android:layout_alignLeft="@+id/lbl_numeroPregunta"
+            android:layout_alignStart="@+id/lbl_numeroPregunta"
+            android:layout_gravity="right" />
+    </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Respuesta 3"
-        android:id="@+id/btn_respuesta3"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/btn_respuesta1"
-        android:layout_alignEnd="@+id/btn_respuesta1"
-        android:onClick="respuesta3" />
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Respuesta 1"
+            android:id="@+id/btn_respuesta1"
+            android:onClick="respuesta1"
+            android:background="@drawable/estilos"
+            style="@style/BotonesSeleccion"
+            android:layout_marginTop="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/linearLayout"
+            android:layout_alignEnd="@+id/linearLayout" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Respuesta 2"
+            android:id="@+id/btn_respuesta2"
+            android:layout_below="@+id/btn_respuesta1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:onClick="respuesta2"
+            android:background="@drawable/estilos"
+            style="@style/BotonesSeleccion"
+            android:layout_alignRight="@+id/lbPregunta1"
+            android:layout_alignEnd="@+id/lbPregunta1" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Respuesta 3"
+            android:id="@+id/btn_respuesta3"
+            android:layout_below="@+id/btn_respuesta2"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/btn_respuesta1"
+            android:layout_alignEnd="@+id/btn_respuesta1"
+            android:onClick="respuesta3"
+            android:background="@drawable/estilos"
+            style="@style/BotonesSeleccion" />
+    </LinearLayout>
 
 </RelativeLayout>
