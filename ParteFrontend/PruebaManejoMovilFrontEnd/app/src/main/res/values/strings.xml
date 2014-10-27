@@ -8,5 +8,6 @@
     <string name="loginFB">Entrar con Facebook</string>
     <string name="loginTW">Entrar con Twitter</string>
     <string name="logo">Logo PMM</string>
+    <string name="title_activity_lugar">Map</string>
 
 </resources>
