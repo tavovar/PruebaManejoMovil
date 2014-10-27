@@ -26,6 +26,12 @@
     <string name="reprobado">Reprobado</string>
     <string name="siguiente">Siguiente</string>
     <string name="siguientepregunta">Siguiente pregunta</string>
-    <string name="title_activity_menu">menu</string>
+    <string name="manual">Manual</string>
+    <string name="testteorico">Prueba teórica</string>
+    <string name="testpractico">Prueba práctica</string>
+    <string name="resultados">Resultados</string>
+    <string name="sugerencias">Sugerencias</string>
+    <string name="sucursales">Sucursales</string>
+    <string name="title_activity_menu">Menú</string>
 
 </resources>
