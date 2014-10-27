@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">"Movilv2.0 "</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="numeroPregunta1">Pregunta:</string>
+    <string name="numeroPregunta2">de 40</string>
+    <string name="consultarMenu">Consultar manual</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="indicaciones1">El test teórico cuenta con 40 preguntas, aunque no hay límite de tiempo, recuerde que es un factor importante a la hora de realizar la verdadera prueba teórica de manejo</string>
+    <string name="indicaciones2">Cada pregunta contiene 3 respuestas, donde solo una es correcta, si desea consultar un tema puede hacerlo en la misma pregunta, pues se provee la sección del manual donde viene dicho tema</string>
+    <string name="iniciar">Iniciar</string>
+    <string name="correctas">Correctas</string>
+    <string name="incorrectas">Incorrectas</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="instrucciones">Instrucciones</string>
+    <string name="resultado">Resultado</string>
+    <string name="mensajeConfirmacion">¿Desea salir del test?</string>
+    <string name="advertencia">Advertencia</string>
+    <string name="title_activity_preguntas_teoricas">PreguntasTeoricas</string>
+    <string name="title_activity_resultado_de_test">ResultadoDeTest</string>
+    <string name="si">Si</string>
+    <string name="no">No</string>
+    <string name="aprobado">Aprobado</string>
+    <string name="reprobado">Reprobado</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="siguientepregunta">Siguiente pregunta</string>
+    <string name="manual">Manual</string>
+    <string name="testteorico">Prueba teórica</string>
+    <string name="testpractico">Prueba práctica</string>
+    <string name="resultados">Resultados</string>
+    <string name="sugerencias">Sugerencias</string>
+    <string name="sucursales">Sucursales</string>
+    <string name="title_activity_menu">Menú</string>
+
+</resources>

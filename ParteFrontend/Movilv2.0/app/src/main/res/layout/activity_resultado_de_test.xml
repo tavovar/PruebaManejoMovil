@@ -1,0 +1,134 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.gustavovargas.movilv20.ResultadoDeTest"
+    style="@style/Fondos">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/resultado"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="50dp"
+        style="@style/GreenText"
+        android:textStyle="bold" />
+
+    <Button
+        style="@style/BotonesSeleccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/aceptar"
+        android:id="@+id/btn_aceptar"
+        android:onClick="terminarTestTeorico"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/azul"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:id="@+id/linearLayout3"
+        android:layout_alignBottom="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="32dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:background="@drawable/check"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="#"
+            android:textSize="30dp"
+            android:id="@+id/lbl_correctas"
+            style="@style/RedText" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:id="@+id/linearLayout"
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignRight="@+id/linearLayout4"
+        android:layout_alignEnd="@+id/linearLayout4"
+        android:layout_marginRight="33dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:background="@drawable/equis"
+            android:layout_above="@+id/lbl_incorrectas"
+            android:layout_toRightOf="@+id/lbl_resultado"
+            android:layout_toEndOf="@+id/lbl_resultado" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="#"
+            android:textSize="30dp"
+            android:id="@+id/lbl_incorrectas"
+            android:layout_alignTop="@+id/lbl_correctas"
+            android:layout_toRightOf="@+id/textView"
+            android:layout_toEndOf="@+id/textView"
+            style="@style/RedText" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|fill_vertical"
+        android:layout_below="@+id/linearLayout3"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout4">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/lbl_resultado"
+            android:textSize="40dp"
+            android:text="Aprobado"
+            style="@style/RedText"
+            android:layout_marginTop="28dp"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/img_resultado"
+            android:src="@drawable/ic_launcher"
+            android:paddingTop="20dp"
+            android:layout_below="@+id/lbl_resultado"
+            android:layout_alignLeft="@+id/btn_aceptar"
+            android:layout_alignStart="@+id/btn_aceptar" />
+    </LinearLayout>
+</RelativeLayout>
