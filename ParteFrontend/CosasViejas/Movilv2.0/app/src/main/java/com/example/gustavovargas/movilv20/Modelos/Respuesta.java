@@ -6,10 +6,7 @@ package com.example.gustavovargas.movilv20.Modelos;
 public class Respuesta {
     public String respuesta;
     public boolean correcta = false;
-
-
     public Respuesta(){
-
     }
 
 }

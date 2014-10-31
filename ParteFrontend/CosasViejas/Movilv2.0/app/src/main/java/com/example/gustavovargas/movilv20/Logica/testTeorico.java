@@ -3,17 +3,21 @@ package com.example.gustavovargas.movilv20.Logica;
 import com.example.gustavovargas.movilv20.Constantes.Constantes;
 import com.example.gustavovargas.movilv20.Modelos.Pregunta;
 import com.example.gustavovargas.movilv20.Modelos.Respuesta;
+import com.example.gustavovargas.movilv20.Modelos.Usuario;
 import com.example.gustavovargas.movilv20.ParseJson.ConexionAPI;
+
+import org.json.JSONException;
 
 /**
  * Created by gustavovargas on 24/10/14.
  */
 public class testTeorico {
 
-    private Pregunta listaPreguntas[];
+    private Pregunta pregunta;
     public int preguntaActual=-1;
     public boolean resultado;
     public int preguntasCorrectas;
+    ConexionAPI test = new ConexionAPI();
 
     private static testTeorico instance = null;
 
@@ -25,8 +29,7 @@ public class testTeorico {
     }
 
     protected testTeorico(){
-        ConexionAPI test = new ConexionAPI();
-        listaPreguntas = test.solicitarPreguntasTeoricas();
+        pregunta = test.solicitarPreguntasTeoricas();
         preguntaActual = -1;
         resultado = false;
         preguntasCorrectas = 0;
@@ -35,8 +38,9 @@ public class testTeorico {
 
     public Pregunta SiguintePregunta(){
         preguntaActual++;
+        pregunta = test.solicitarPreguntasTeoricas();
         if (preguntaActual< Constantes.maximoNumPregTestTeo){
-            return listaPreguntas[preguntaActual];
+            return pregunta;
         }else{
             if(preguntasCorrectas>Constantes.numMiniPregNotaAprov){
                 resultado = true;
@@ -48,7 +52,6 @@ public class testTeorico {
     }
 
     public boolean revisarRespuesta(int respuesta){
-        Pregunta pregunta = listaPreguntas[(preguntaActual)];
         if(pregunta.respuestas[respuesta].correcta == true){
             preguntasCorrectas++;
             return true;
@@ -58,7 +61,6 @@ public class testTeorico {
     }
 
     public int respuestaCorrecta(){
-        Pregunta pregunta = listaPreguntas[(preguntaActual)];
         if(pregunta.respuestas[0].correcta == true){
             return 1;
         }else if (pregunta.respuestas[1].correcta == true){
@@ -70,10 +72,20 @@ public class testTeorico {
 
     public void reiniciarTestTeorico(){
         ConexionAPI test = new ConexionAPI();
-        listaPreguntas = test.solicitarPreguntasTeoricas();
+        pregunta = test.solicitarPreguntasTeoricas();
         preguntaActual = -1;
         resultado = false;
         preguntasCorrectas = 0;
+    }
+
+
+    public void guardarResultadosTestTeorico(){
+        ConexionAPI test = new ConexionAPI();
+        try {
+            test.ResultadoTestJson(preguntasCorrectas, Usuario.getInstance().id,Constantes.tipoTeorico);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 }

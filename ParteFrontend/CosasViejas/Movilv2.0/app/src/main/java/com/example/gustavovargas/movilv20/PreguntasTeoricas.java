@@ -80,17 +80,17 @@ public class PreguntasTeoricas extends Activity {
             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             // Vibrate for 300 milliseconds
             v.vibrate(Constantes.tiempoVibracionIncorrecto);
-            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.rojo);
-            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.estilos);
+            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.rojo);
+            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.estilos);
             ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.rojo);
         }else{
             // Get instance of Vibrator from current Context
             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             // Vibrate for 300 milliseconds
             v.vibrate(Constantes.tiempoVibracionIncorrecto);
-            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.rojo);
+            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.rojo);
             ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.rojo);
-            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.estilos);
+            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.estilos);
         }
         cargarSiguientePregunta();
     }
@@ -103,17 +103,17 @@ public class PreguntasTeoricas extends Activity {
             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             // Vibrate for 300 milliseconds
             v.vibrate(Constantes.tiempoVibracionIncorrecto);
-            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.rojo);
-            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.estilos);
+            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.rojo);
+            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.estilos);
             ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.rojo);
         }else{
             // Get instance of Vibrator from current Context
             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             // Vibrate for 300 milliseconds
             v.vibrate(Constantes.tiempoVibracionIncorrecto);
-            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.rojo);
+            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.rojo);
             ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.rojo);
-            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.estilos);
+            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.estilos);
         }
         cargarSiguientePregunta();
     }
@@ -126,17 +126,17 @@ public class PreguntasTeoricas extends Activity {
             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             // Vibrate for 300 milliseconds
             v.vibrate(Constantes.tiempoVibracionIncorrecto);
-            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.rojo);
+            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.rojo);
             ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.rojo);
-            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.estilos);
+            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.estilos);
         }else{
             // Get instance of Vibrator from current Context
             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             // Vibrate for 300 milliseconds
             v.vibrate(Constantes.tiempoVibracionIncorrecto);
-            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.rojo);
+            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.rojo);
             ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.rojo);
-            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.estilos);
+            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.estilos);
         }
         cargarSiguientePregunta();
     }
@@ -154,6 +154,7 @@ public class PreguntasTeoricas extends Activity {
             public void onClick(DialogInterface dialog, int which) {
                 Pregunta pregunta = test.SiguintePregunta();
                 if (pregunta != null) {
+                    test.guardarResultadosTestTeorico();
                     ((TextView) findViewById(R.id.lbl_numeroPregunta)).setText((test.preguntaActual+1)+"");
                     ((TextView) findViewById(R.id.lbl_pregunta)).setText(pregunta.pregunta);
                     ((Button) findViewById(R.id.btn_respuesta1)).setText(pregunta.respuestas[0].respuesta);

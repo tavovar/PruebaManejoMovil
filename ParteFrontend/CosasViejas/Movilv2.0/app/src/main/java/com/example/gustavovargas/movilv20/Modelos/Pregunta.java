@@ -7,9 +7,9 @@ public class Pregunta {
 
     public String pregunta;
     public Respuesta respuestas[] = new Respuesta[3];
-
+    public int id;
+    public int idSubseccion;
     public Pregunta(){
-
     }
 
 }
