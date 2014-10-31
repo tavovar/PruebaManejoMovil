@@ -33,10 +33,10 @@ var router = express.Router();
 router.get('/app/preguntas', preguntas.ObtenerPreguntasTeoricas);
 router.get('/app/lugares', lugares.ObtenerLugaresSucursales);
 router.get('/app/manuales', manuales.ObtenerManuales);
-router.get('/app/historial', ObjetoHistorial.ObtenerHistorial);
+router.get('/app/historiales', ObjetoHistorial.ObtenerHistorial);
 
 router.post('/usuariosweb', x.IdentificarseWeb);
-router.post('app/historial', ObjetoHistorial.guardarHistorial);
+router.post('/app/historiales', ObjetoHistorial.guardarHistorial);
 
 app.all('/', function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

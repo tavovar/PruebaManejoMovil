@@ -18,11 +18,13 @@ Historial = function () {
     };
 
     this.guardarHistorial = function (req, res) {
+        console.log("HOLA umundo");
         //var admin = new adminHistorial.AdminHistorial();
         //admin.getTodoHistorial(function (data) {
         //    servidor.responderJson(res, data);
         //});
-        console.log(req.body.json);
+        console.log(req.body.Json);
+        servidor.responderJson(res, "Hola");
     };
 
 

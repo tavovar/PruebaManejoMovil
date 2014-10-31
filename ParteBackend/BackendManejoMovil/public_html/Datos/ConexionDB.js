@@ -27,6 +27,9 @@ ConexionDB = function () {
         //this.connection.escape();
     };
     
+    this.CerrarConexion = function (){
+        this.connection.end();
+    };
     
     this.getConexion = function(){
         return this.connection;
@@ -42,6 +45,7 @@ ConexionDB = function () {
                 callBack(rows);
             }
         });
+        this.CerrarConexion();
     };
     
     this.saveDato = function(pQuery, pObjeto, callBack){
@@ -52,11 +56,11 @@ ConexionDB = function () {
                 callBack(rows);
             }
         });
+        this.CerrarConexion();
     };
     
-    this.close = function (){
-        
-    };
+    
+    
     
 };
 
