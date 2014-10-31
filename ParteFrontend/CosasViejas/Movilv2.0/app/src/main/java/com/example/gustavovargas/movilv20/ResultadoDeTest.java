@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -25,6 +26,8 @@ public class ResultadoDeTest extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultado_de_test);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
     }
 
     @Override
@@ -33,8 +36,9 @@ public class ResultadoDeTest extends Activity {
         testTeorico test = testTeorico.getInstance();
         ((TextView) findViewById(R.id.lbl_correctas)).setText(""+test.preguntasCorrectas);
         ((TextView) findViewById(R.id.lbl_incorrectas)).setText(""+(Constantes.maximoNumPregTestTeo-test.preguntasCorrectas));
-        double resultado = (test.preguntasCorrectas)/(Constantes.maximoNumPregTestTeo);
+        float resultado = (test.preguntasCorrectas*1.0f)/(Constantes.maximoNumPregTestTeo*1.0f)*100;
         Log.v("Nota",resultado+"");
+        test.guardarResultadosTestTeorico();
         ((TextView) findViewById(R.id.lbl_NotaResultado)).setText((String.format("%.2f", resultado)) + "%");
         if(test.preguntasCorrectas>Constantes.numMiniPregNotaAprov){
             ((TextView) findViewById(R.id.lbl_resultado)).setText(R.string.aprobado);
