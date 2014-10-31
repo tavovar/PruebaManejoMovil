@@ -1,26 +1,24 @@
 package com.example.gustavovargas.movilv20;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 
-public class menu extends Activity {
+public class Sugerencias extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_sugerencias);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.sugerencias, menu);
         return true;
     }
 
@@ -35,24 +33,4 @@ public class menu extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-    public void callPruebaTeorica(View view) {
-        //Log.d("Lab1", "Estoy en el callMaps()");
-        Intent intent = new Intent(getApplicationContext(), Preguntas.class);
-        startActivity(intent);
-    }
-
-    public void callSugerencias(View view) {
-        //Log.d("Lab1", "Estoy en el callMaps()");
-        Intent intent = new Intent(getApplicationContext(), Sugerencias.class);
-        startActivity(intent);
-    }
-
-    public void callResultados(View view) {
-        //Log.d("Lab1", "Estoy en el callMaps()");
-        Intent intent = new Intent(getApplicationContext(), Resultados.class);
-        startActivity(intent);
-    }
-
 }

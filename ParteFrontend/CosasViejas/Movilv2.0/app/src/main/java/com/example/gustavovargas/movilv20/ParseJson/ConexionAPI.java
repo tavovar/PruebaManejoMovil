@@ -11,6 +11,7 @@ import com.example.gustavovargas.movilv20.Modelos.Respuesta;
 import com.example.gustavovargas.movilv20.R;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -19,7 +20,10 @@ import org.apache.http.client.methods.*;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.*;
 
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URI;
 import java.util.ArrayList;
 
 /**
@@ -30,35 +34,31 @@ public class ConexionAPI {
 
     public Pregunta[] solicitarPreguntasTeoricas(){
 
-        //location of file to retrieve
-        String url = "http://www.pruebamanejomovil.com/app/preguntas";
+
         Pregunta listaPreguntas[] = new Pregunta[40];
+        BufferedReader in = null;
+        String data = null;
 
-        HttpClient httpclient = new DefaultHttpClient();
-
-        // Prepare a request object
-        HttpGet httpget = new HttpGet(url);
-
-        // Execute the request
-        HttpResponse response;
         try {
-            response = httpclient.execute(httpget);
-            // Examine the response status
-            Log.i("Praeda",response.getStatusLine().toString());
+            HttpClient httpclient = new DefaultHttpClient();
 
-            // Get hold of the response entity
-            HttpEntity entity = response.getEntity();
-            // If the response does not enclose an entity, there is no need
-            // to worry about connection release
+            HttpGet request = new HttpGet();
+            URI website = new URI("http://google.com");
+            request.setURI(website);
+            HttpResponse response = httpclient.execute(request);
+            in = new BufferedReader(new InputStreamReader(
+                    response.getEntity().getContent()));
 
-            if (entity != null) {
+            // NEW CODE
+            String line = in.readLine();
+            Log.v("---------> "," First line: " + line);
+            // END OF NEW CODE
 
-                // A Simple JSON Response Read
-                InputStream instream = entity.getContent();
-                //String result= convertStreamToString(instream);
-                // now you have the string representation of the HTML request
-                instream.close();
-            }
+            Log.v("---------> "," Connected ");
+
+
+
+
             Respuesta r1 = new Respuesta();
             r1.respuesta = "Respuesta1";
             Respuesta r2 = new Respuesta();
@@ -76,6 +76,7 @@ public class ConexionAPI {
 
 
         } catch (Exception e) {
+            Log.v("++++++++++++++++++++++++++++++++++++++",e.toString());
             for(int i = 0; i<40; i++){
                 Respuesta r1 = new Respuesta();
                 r1.respuesta = "Respuesta 1";

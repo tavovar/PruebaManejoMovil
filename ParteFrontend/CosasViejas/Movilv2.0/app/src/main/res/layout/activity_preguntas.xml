@@ -19,7 +19,7 @@ android:layout_centerHorizontal="true"
 android:textSize="35dp"
 android:textStyle="bold"
 android:textColor="#ff1bca29"
-    android:id="@+id/textView2" />
+    android:id="@+id/lbl_NotaResultado" />
 
 
     <TextView
@@ -32,7 +32,7 @@ android:textColor="#ff1bca29"
         android:textAlignment="center"
         style="@style/RedText"
         android:textSize="15dp"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/lbl_NotaResultado"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:gravity="center_vertical|center_horizontal" />

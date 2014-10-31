@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,14 +33,15 @@ public class ResultadoDeTest extends Activity {
         testTeorico test = testTeorico.getInstance();
         ((TextView) findViewById(R.id.lbl_correctas)).setText(""+test.preguntasCorrectas);
         ((TextView) findViewById(R.id.lbl_incorrectas)).setText(""+(Constantes.maximoNumPregTestTeo-test.preguntasCorrectas));
+        double resultado = (test.preguntasCorrectas)/(Constantes.maximoNumPregTestTeo);
+        Log.v("Nota",resultado+"");
+        ((TextView) findViewById(R.id.lbl_NotaResultado)).setText((String.format("%.2f", resultado)) + "%");
         if(test.preguntasCorrectas>Constantes.numMiniPregNotaAprov){
             ((TextView) findViewById(R.id.lbl_resultado)).setText(R.string.aprobado);
-            ((ImageView) findViewById(R.id.img_resultado)).setImageResource(R.drawable.felicidades);
             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             v.vibrate(Constantes.tiempoVibracionAprovado, -1);
         }else{
             ((TextView) findViewById(R.id.lbl_resultado)).setText(R.string.reprobado);
-            ((ImageView) findViewById(R.id.img_resultado)).setImageResource(R.drawable.reprovastes);
         }
     }
 

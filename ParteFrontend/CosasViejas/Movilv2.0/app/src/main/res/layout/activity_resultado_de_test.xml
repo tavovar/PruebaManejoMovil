@@ -7,7 +7,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.gustavovargas.movilv20.ResultadoDeTest"
-    style="@style/Fondos">
+    style="@style/Fondos"
+    android:gravity="center_vertical|center_horizontal">
 
 
     <TextView
@@ -15,7 +16,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/resultado"
-        android:id="@+id/textView"
+        android:id="@+id/lbl_sugerencias"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textSize="50dp"
@@ -73,7 +74,7 @@
         android:gravity="center_horizontal"
         android:id="@+id/linearLayout"
         android:layout_marginTop="33dp"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/lbl_sugerencias"
         android:layout_alignRight="@+id/linearLayout4"
         android:layout_alignEnd="@+id/linearLayout4"
         android:layout_marginRight="33dp">
@@ -95,8 +96,8 @@
             android:textSize="30dp"
             android:id="@+id/lbl_incorrectas"
             android:layout_alignTop="@+id/lbl_correctas"
-            android:layout_toRightOf="@+id/textView"
-            android:layout_toEndOf="@+id/textView"
+            android:layout_toRightOf="@+id/lbl_sugerencias"
+            android:layout_toEndOf="@+id/lbl_sugerencias"
             style="@style/RedText" />
     </LinearLayout>
 
@@ -121,14 +122,16 @@
             android:layout_centerHorizontal="true"
             android:textStyle="bold" />
 
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:id="@+id/img_resultado"
-            android:src="@drawable/ic_launcher"
-            android:paddingTop="20dp"
-            android:layout_below="@+id/lbl_resultado"
-            android:layout_alignLeft="@+id/btn_aceptar"
-            android:layout_alignStart="@+id/btn_aceptar" />
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="68%"
+        android:id="@+id/lbl_NotaResultado"
+        android:textSize="70dp"
+        android:layout_below="@+id/linearLayout4"
+        android:layout_toRightOf="@+id/linearLayout3"
+        android:layout_toEndOf="@+id/linearLayout3"
+        android:layout_marginTop="40dp" />
 </RelativeLayout>
