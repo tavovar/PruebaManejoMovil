@@ -5,13 +5,13 @@
  */
 
 var AdminLugares = require('../Logica/AdminLugares.js');
-
+var servidor = require('./Servidor.js');
 
 ObtenerLugaresSucursales = function (req, res) {
     var x = new AdminLugares.AdminLugares();
 
     x.getLugares(1, function (data) {
-        res.send(data);
+        servidor.responderJson(res, data);
     });
 };
 

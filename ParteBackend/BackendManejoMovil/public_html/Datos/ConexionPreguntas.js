@@ -14,7 +14,8 @@ var ConexionPreguntas = function () {
     this.getPreguntas = function (pPais, callback) {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
-        mConexion.getDatos("select * from preguntas", callback);
+        //mConexion.getDatos("SELECT * FROM preguntas ORDER BY pk_preguntas LIMIT 20", callback);
+        mConexion.getDatos("SELECT * FROM (SELECT * FROM preguntas ORDER BY RAND()) as randomTable LIMIT 1", callback);
         mConexion.close();
     };
 

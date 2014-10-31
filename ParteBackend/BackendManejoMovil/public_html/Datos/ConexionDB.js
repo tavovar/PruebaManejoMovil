@@ -38,7 +38,7 @@ ConexionDB = function () {
             if (err) {
                 throw err;
             } else {
-                console.log(rows);
+                //console.log(rows);
                 callBack(rows);
             }
         });
