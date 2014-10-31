@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.os.Vibrator;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -32,16 +33,24 @@ public class PreguntasTeoricas extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preguntas_teoricas);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         test = testTeorico.getInstance();
-        ((TextView) findViewById(R.id.lbl_numeroPregunta)).setText((test.preguntaActual+1)+"");
-        ((TextView) findViewById(R.id.lbl_pregunta)).setText("");
-        ((Button) findViewById(R.id.btn_respuesta1)).setText("");
-        ((Button) findViewById(R.id.btn_respuesta2)).setText("");
-        ((Button) findViewById(R.id.btn_respuesta3)).setText("");
-        ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.estilos);
-        ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.estilos);
-        ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.estilos);
-        cargarSiguientePregunta();
+        Pregunta pregunta = test.SiguintePregunta();
+        if (pregunta != null) {
+            ((TextView) findViewById(R.id.lbl_numeroPregunta)).setText((test.preguntaActual+1)+"");
+            ((TextView) findViewById(R.id.lbl_pregunta)).setText(pregunta.pregunta);
+            ((Button) findViewById(R.id.btn_respuesta1)).setText(pregunta.respuestas[0].respuesta);
+            ((Button) findViewById(R.id.btn_respuesta2)).setText(pregunta.respuestas[1].respuesta);
+            ((Button) findViewById(R.id.btn_respuesta3)).setText(pregunta.respuestas[2].respuesta);
+            ((Button) findViewById(R.id.btn_respuesta1)).setBackgroundResource(R.drawable.estilos);
+            ((Button) findViewById(R.id.btn_respuesta3)).setBackgroundResource(R.drawable.estilos);
+            ((Button) findViewById(R.id.btn_respuesta2)).setBackgroundResource(R.drawable.estilos);
+        } else {
+            Intent intent = new Intent(getBaseContext(), ResultadoDeTest.class);
+            finish();
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -138,14 +147,6 @@ public class PreguntasTeoricas extends Activity {
 
         AlertDialog alertDialog1 = new AlertDialog.Builder(this).create();
 
-        // Setting Dialog Title
-        alertDialog1.setTitle(R.string.siguientepregunta);
-
-        // Setting Dialog Message
-        //alertDialog1.setMessage("Welcome to 9Android.net");
-
-        // Setting Icon to Dialog
-        //alertDialog1.setIcon(R.drawable.tick);
 
         // Setting OK Button
         alertDialog1.setButton("Siguiente", new DialogInterface.OnClickListener() {

@@ -52,7 +52,8 @@
             android:text="@string/resultados"
             android:gravity="center_horizontal|bottom"
             style="@style/BotoneMenu"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:onClick="callResultados" />
 
     </LinearLayout>
 
@@ -85,7 +86,8 @@
             style="@style/BotoneMenu"
             android:gravity="center_horizontal|bottom"
             android:text="@string/sugerencias"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:onClick="callSugerencias" />
 
         <Button
             android:layout_width="wrap_content"

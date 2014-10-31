@@ -33,5 +33,9 @@
     <string name="sugerencias">Sugerencias</string>
     <string name="sucursales">Sucursales</string>
     <string name="title_activity_menu">Menú</string>
+    <string name="title_activity_sugerencias">Sugerencias</string>
+    <string name="desearecibirrespuesta">Deseo recibir respuesta</string>
+    <string name="sugerenciasInstrucciones">Danos un consejo o sugierenos una nueva pregunta</string>
+    <string name="title_activity_resultados">Resultados</string>
 
 </resources>
