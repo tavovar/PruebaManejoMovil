@@ -111,7 +111,7 @@
         android:id="@+id/linearLayout4">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/lbl_resultado"
@@ -120,19 +120,21 @@
             style="@style/RedText"
             android:layout_marginTop="28dp"
             android:layout_centerHorizontal="true"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:gravity="center_vertical|center_horizontal" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="68%"
+            android:id="@+id/lbl_NotaResultado"
+            android:textSize="70dp"
+            android:layout_below="@+id/linearLayout4"
+            android:layout_marginTop="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center_horizontal" />
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="68%"
-        android:id="@+id/lbl_NotaResultado"
-        android:textSize="70dp"
-        android:layout_below="@+id/linearLayout4"
-        android:layout_marginTop="40dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:gravity="center_horizontal" />
 </RelativeLayout>

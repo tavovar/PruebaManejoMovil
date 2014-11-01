@@ -98,7 +98,8 @@
             style="@style/BotoneMenu"
             android:text="@string/testpractico"
             android:gravity="center_horizontal|bottom"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:onClick="callPruebaPractica" />
     </LinearLayout>
 
 </RelativeLayout>

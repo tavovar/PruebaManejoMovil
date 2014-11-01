@@ -50,23 +50,15 @@
         android:layout_alignParentStart="true"
         android:weightSum="1"
         android:gravity="center_vertical|center_horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="30dp">
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:ems="10"
-            android:id="@+id/txt_correo"
+            android:id="@+id/txt_email_sugerencia"
             android:text="Email" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="phone"
-            android:ems="10"
-            android:id="@+id/txt_telefono"
-            android:text="Teléfono" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -77,15 +69,15 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="109dp"
-            android:id="@+id/editText5"
+            android:layout_height="200dp"
+            android:id="@+id/txt_sugerencia"
             android:gravity="left|top" />
 
         <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/desearecibirrespuesta"
-            android:id="@+id/switch1"
+            android:id="@+id/switch_respuesta"
             android:layout_gravity="center_horizontal"
             android:checked="false" />
     </LinearLayout>
@@ -94,10 +86,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/aceptar"
-        android:id="@+id/button"
+        android:id="@+id/btn_enviar_sugerencia"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:gravity="center_vertical|center_horizontal"
         style="@style/BotoneMenu"
-        android:background="@drawable/azul" />
+        android:background="@drawable/azul"
+        android:onClick="enviarSugerencia" />
 </RelativeLayout>

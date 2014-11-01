@@ -58,17 +58,16 @@ public class ConexionAPI {
 
 
 
-    public boolean SugerenciaTestJson(int preguntasCorrectas, double usuario, int tipo) throws JSONException {
+    public boolean SugerenciaTestJson(double usuario, int respuesta, String sugerencia, String email) throws JSONException {
         JSONObject jsonObj = new JSONObject();
-        jsonObj.put(Constantes.tipoResultado, tipo);
-        jsonObj.put(Constantes.preguntasCorrectasResultado, preguntasCorrectas);
-        jsonObj.put(Constantes.idUsuarioResultado,usuario);
-        jsonObj.put(Constantes.fecha, new Date());
-        //Log.v("JSON Resultado",jsonObj.toString());
+        jsonObj.put(Constantes.idUsuarioSugerencia, usuario);
+        jsonObj.put(Constantes.respuestaSugerencia, respuesta);
+        jsonObj.put(Constantes.email,email);
+        jsonObj.put(Constantes.fecha,new Date());
         try {
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost request = new HttpPost();
-            URI website = new URI(Constantes.URLPreguntas);
+            URI website = new URI(Constantes.URLSugerencias);
             List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(1);
             nameValuePair.add(new BasicNameValuePair("Json", jsonObj.toString()));
             //nameValuePair.add(new BasicNameValuePair("id", "123456789"));
