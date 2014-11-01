@@ -14,7 +14,6 @@ var ConexionLugares = function () {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
         mConexion.getDatos("select * from sucursales", callback);
-        mConexion.close();
     };
 
     this.agregarLugar = function (pLugar, callback) {
@@ -24,7 +23,6 @@ var ConexionLugares = function () {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
         mConexion.saveDato("INSERT INTO sucursales SET ?", mObjeto, callback);
-        mConexion.close();
 
     };
 };

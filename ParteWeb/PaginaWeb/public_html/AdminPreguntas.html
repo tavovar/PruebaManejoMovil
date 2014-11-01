@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Administrar de preguntas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/semantic.css">
+        <link rel="stylesheet" type="text/css" href="css/Estilos.css">
+        <script type="text/javascript" src="javascript/funciones.js"></script>
+    </head>
+    <body>
+        <br><br>
+        <div class="ui celled grid">
+            <div class="row">
+                <div id="sideBar" class="two wide column center aligned">
+                </div>
+                <script>
+                    getSideBar(0);
+                </script>
+                <div class="ten wide column">
+                    <div class="ui form segment ">
+                        <h1>Sección de Preguntas</h1>
+                        <br>
+                        <div class="MarginSubTitulo">
+                            <h2>Agregar una pregunta</h2>
+                            <br>
+                            <div class="row MarginSubSubTitulo">
+                                Seleccione una subsección:
+                                <select class="ui button tiny">
+                                    <option value="volvo">Volvo</option>
+                                    <option value="saab">Saab</option>
+                                </select>
+                                <p>
+                                <div class="ui input" style="width: 75%;">
+                                    Descripcón:
+                                    <div class="MarginSubTitulo">
+                                        <textarea placeholder="Escriba la descripción de la pregunta"></textarea>
+                                    </div>
+                                    <br>
+                                    Opción correcta:
+                                    <div class="MarginSubTitulo">
+                                        <input type="text" placeholder="Respuesta correcta">
+                                    </div>
+                                    <br>
+                                    Opción incorrecta:
+                                    <div class="MarginSubTitulo">
+                                        <input type="text" placeholder="Respuesta incorrecta">
+                                    </div>
+                                    <br>
+                                    Opción incorrecta:
+                                    <div class="MarginSubTitulo">
+                                        <input type="text" placeholder="Respuesta incorrecta">
+                                    </div>
+                                    <br>
+                                    <div class="ui secondary button tiny">
+                                        Agregar
+                                    </div>
+                                </div>
+
+                            </div>
+                            <br>
+                            <h2>Preguntas Agregadas</h2>
+                            <br>
+                            <div class="row MarginSubSubTitulo">
+                                Seleccione una Pregunta
+                                <select class="ui button tiny">
+                                    <option value="volvo">Volvo</option>
+                                    <option value="saab">Saab</option>
+                                </select>
+                                <div class="ui primary button tiny">
+                                    Eliminar
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

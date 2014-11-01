@@ -3,19 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+var Constantes = require('../Constantes/Constantes.js');
 
 
-AdminPreguntas = function () {
+AdminUsuarios = function () {
     var conexionPreguntas = require('../Datos/ConexionPreguntas.js');
     this.ConPreguntas = new conexionPreguntas.ConexionPreguntas();
 
-    this.getPreguntas = function (pPais, pFuncion) {
-        return this.ConPreguntas.getPreguntas(pPais, pFuncion);
-    };
+    var ObjetoConstantes = new Constantes.Constantes();
 
-    this.agregarPreguntas = function (pObjeto, pFuncion) {
-        this.ConPreguntas.agregarPreguntas(pObjeto, pFuncion);
+    this.identificacionWeb = function(pUsuario, pContrasena){
+        console.log(pUsuario + ObjetoConstantes.UsuarioWeb);
+        if (pUsuario === ObjetoConstantes.UsuarioWeb && pContrasena===ObjetoConstantes.Password){
+            return true;
+        }
+        else{
+            return false;
+        }
     };
 };
 
-exports.AdminPreguntas = AdminPreguntas;
+exports.AdminUsuarios = AdminUsuarios;

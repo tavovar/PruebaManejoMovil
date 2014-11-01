@@ -8,3 +8,15 @@ and open the template in the editor.
     Author     : Ney Rojas
 */
 
+.MarginSubTitulo{
+    margin-left: 5%;
+}
+
+.MarginSubSubTitulo{
+    margin-left: 10%;
+}
+
+#map_canvas {
+    width: 60%;
+    height: 400px;
+}

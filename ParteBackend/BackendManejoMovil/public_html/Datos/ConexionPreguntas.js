@@ -14,8 +14,8 @@ var ConexionPreguntas = function () {
     this.getPreguntas = function (pPais, callback) {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
-        mConexion.getDatos("select * from preguntas", callback);
-        mConexion.close();
+        //mConexion.getDatos("SELECT * FROM preguntas ORDER BY pk_preguntas LIMIT 20", callback);
+        mConexion.getDatos("SELECT * FROM (SELECT * FROM preguntas ORDER BY RAND()) as randomTable LIMIT 1", callback);
     };
 
     this.agregarPregunta = function (pObjeto, callback) {
@@ -25,7 +25,6 @@ var ConexionPreguntas = function () {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
         mConexion.saveDato("INSERT INTO preguntas SET ?", mObjeto, callback);
-        mConexion.close();
     };
 };
 

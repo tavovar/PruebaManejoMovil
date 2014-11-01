@@ -11,11 +11,11 @@ var AdminHistorial = function () {
     this.ConHistorial = new conexionHistorial.ConexionHistorial();
 
     this.getTodoHistorial = function (pIdUsuario, callback) {
-        this.getTodoHistorial(pIdUsuario, callback);
+        this.ConHistorial.getTodoHistorial(pIdUsuario, callback);
     };
 
     this.agregarHistorial = function (pIdUsuario, pObjeto, callback) {
-        this.agregarHistorial(pIdUsuario, pObjeto, callback);
+        this.ConHistorial.agregarHistorial(pIdUsuario, pObjeto, callback);
     };
 
 };

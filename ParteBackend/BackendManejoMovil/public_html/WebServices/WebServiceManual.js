@@ -6,12 +6,12 @@
 
 
 var adminManual = require('../Logica/AdminManual.js');
-
+var servidor = require('./Servidor.js');
 
 ObtenerManuales = function (req, res) {
     var admin = new adminManual.AdminManual();
     admin.getManuales(function (data) {
-        res.send(data);
+        servidor.responderJson(res, data);
     });
 };
 

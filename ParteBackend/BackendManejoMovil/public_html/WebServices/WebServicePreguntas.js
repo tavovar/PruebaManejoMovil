@@ -5,15 +5,18 @@
  */
 
 var adminPreguntas = require('../Logica/AdminPreguntas.js');
-
+var servidor = require('./Servidor.js');
 
 ObtenerPreguntasTeoricas = function (req, res) {
     console.log("Realizando un request");
     var x = new adminPreguntas.AdminPreguntas();
 
     x.getPreguntas(1, function (data) {
-        res.send(data);
+        servidor.responderJson(res, data);
     });
 };
+
+
+
 
 exports.ObtenerPreguntasTeoricas = ObtenerPreguntasTeoricas;

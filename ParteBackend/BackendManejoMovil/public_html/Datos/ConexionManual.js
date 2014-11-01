@@ -14,7 +14,6 @@ var ConexionManuales = function () {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
         mConexion.getDatos("select * from manuales", callback);
-        mConexion.close();
     };
 
     this.agregarManual = function (pObjeto, callback) {
@@ -23,7 +22,6 @@ var ConexionManuales = function () {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
         mConexion.saveDato("INSERT INTO manuales (nombre, fk_pais) SET ?", mObjeto, callback);
-        mConexion.close();
     };
     
     this.getSecciones = function (pIdManual, callback) {
@@ -31,7 +29,6 @@ var ConexionManuales = function () {
         mConexion.conectar();
         var query = "select * from secciones WHERE pk_seccion=" + pIdManual;
         mConexion.getDatos(query, callback);
-        mConexion.close();
     };
     
     this.agregarSeccion = function (pObjeto, callback) {
@@ -40,7 +37,6 @@ var ConexionManuales = function () {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
         mConexion.saveDato("INSERT INTO secciones (nombre, fk_manual) SET ?", mObjeto, callback);
-        mConexion.close();
     };
     
     this.getSubSecciones = function (pIdSeccion, callback) {
@@ -48,7 +44,6 @@ var ConexionManuales = function () {
         mConexion.conectar();
         var query = "select * from subsecciones WHERE pk_subseccion=" + pIdSeccion;
         mConexion.getDatos(query, callback);
-        mConexion.close();
     };
     
     this.agregarSubseccion = function (pObjeto, callback) {
@@ -57,7 +52,6 @@ var ConexionManuales = function () {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
         mConexion.saveDato("INSERT INTO subsecciones (nombre, descripcion, fk_pais) SET ?", mObjeto, callback);
-        mConexion.close();
     };
     
 };

@@ -15,7 +15,6 @@ var ConexionHistorial = function () {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
         mConexion.getDatos("select * from historiales where fk_usuario="+pIdUsuario, callback);
-        mConexion.close();
     };
 
     this.agregarHistorial = function (pIdUsuario, pObjeto, callback) {
@@ -25,7 +24,6 @@ var ConexionHistorial = function () {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
         mConexion.saveDato("INSERT INTO historiales SET ?", mObjeto, callback);
-        mConexion.close();
 
     };
     

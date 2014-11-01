@@ -17,7 +17,6 @@ var ConexionUsuarios = function () {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
         mConexion.saveDato("INSERT INTO usuarios SET ?", mObjeto, callback);
-        mConexion.close();
     };
     
     this.existeUsuario = function (pObjeto, callback) {
@@ -27,7 +26,6 @@ var ConexionUsuarios = function () {
         mConexion.conectar();
         var query = "SELECT * FROM usuarios WHERE pk_id="+mObjeto.pk_id;
         mConexion.getDatos(query, callback);
-        mConexion.close();
     };
 
 };

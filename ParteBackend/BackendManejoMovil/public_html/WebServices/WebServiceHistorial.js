@@ -6,13 +6,28 @@
 
 
 var adminHistorial = require('../Logica/AdminHistorial.js');
+var servidor = require('./Servidor.js');
+
+Historial = function () {
+
+    this.ObtenerHistorial = function (req, res) {
+        var admin = new adminHistorial.AdminHistorial();
+        admin.getTodoHistorial(function (data) {
+            servidor.responderJson(res, data);
+        });
+    };
+
+    this.guardarHistorial = function (req, res) {
+        console.log("HOLA umundo");
+        //var admin = new adminHistorial.AdminHistorial();
+        //admin.getTodoHistorial(function (data) {
+        //    servidor.responderJson(res, data);
+        //});
+        console.log(req.body.Json);
+        servidor.responderJson(res, "Hola");
+    };
 
 
-ObtenerHistorial = function (req, res) {
-    var admin = new adminHistorial.AdminHistorial();
-    admin.getTodoHistorial(function (data) {
-        res.send(data);
-    });
 };
 
-exports.ObtenerHistorial = ObtenerHistorial;
+exports.Historial = Historial;
