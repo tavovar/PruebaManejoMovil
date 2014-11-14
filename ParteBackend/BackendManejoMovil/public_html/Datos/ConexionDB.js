@@ -12,12 +12,14 @@ ConexionDB = function () {
     this.host = "localhost";
     this.user = "root";
     this.pass = "786Xenoblade786";
+    //this.pass = "Fantasia7";
     this.db = "mydb";
 
-    connection = null;
+    var pool;
 
     this.conectar = function () {
-        connection = mysql.createPool({
+        console.log("CREANDO LA CONEXION CON LA BASE DE DATOS");
+        pool = mysql.createPool({
             connectionLimit: 1000,
             host: this.host,
             user: this.user,
@@ -28,33 +30,32 @@ ConexionDB = function () {
         //this.connection.escape();
     };
 
-    this.CerrarConexion = function () {
-        connection.end();
-
-    };
-
     this.getConexion = function () {
-        return connection;
+        return this.connection;
     };
 
     this.getDatos = function (pQuery, callBack) {
         console.log("Realizando un request" + pQuery);
-        connection.getConnection(function (err, connection) {
-            connection.query(pQuery, function (err, rows) {
-                connection.release();
-                if (err) {
-                    throw err;
-                } else {
-                    callBack(rows);
-                }
-            });
+        pool.getConnection(function (err, connection) {
+            if (err) {
+                throw err;
+            }
+            else {
+                connection.query(pQuery, function (err, rows) {
+                    connection.release();
+                    if (err) {
+                        throw err;
+                    } else {
+                        callBack(rows);
+                    }
+                });
+            }
         });
-        this.CerrarConexion();
     };
-    
+
     this.getDatosSinInyection = function (pQuery, pDato, callBack) {
         console.log("Realizando un request" + pQuery);
-        connection.getConnection(function (err, connection) {
+        pool.getConnection(function (err, connection) {
             connection.query(pQuery, [pDato], function (err, rows) {
                 connection.release();
                 if (err) {
@@ -64,11 +65,10 @@ ConexionDB = function () {
                 }
             });
         });
-        this.CerrarConexion();
     };
 
     this.saveDato = function (pQuery, pObjeto, callBack) {
-        connection.getConnection(function (err, connection) {
+        pool.getConnection(function (err, connection) {
             connection.query(pQuery, pObjeto, function (err, rows) {
                 connection.release();
                 if (err) {

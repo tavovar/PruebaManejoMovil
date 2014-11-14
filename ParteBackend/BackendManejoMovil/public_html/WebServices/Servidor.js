@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 
+ var UbicacionServer = "C:\\Users\\Ney Rojas\\Documents\\GitHub\\PruebaManejoMovil\\ParteWeb\\PaginaWeb\\";
+ //var UbicacionServer = ".\Server";
+
 var lugares = require('./WebServiceLugares.js');
 var preguntas = require('./WebServicePreguntas.js');
 var ObjetoPregunta = new preguntas.WebServicePregunta();
@@ -93,3 +96,8 @@ function responderJson(res, dataJson) {
 }
 
 exports.responderJson = responderJson;
+
+//var connect = require('connect');
+//var serveStatic = require('serve-static');
+//connect().use(serveStatic(UbicacionServer)).listen(8080);
+
