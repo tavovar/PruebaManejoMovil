@@ -11,9 +11,16 @@ AdminPreguntas = function () {
     this.getPreguntas = function (pPais, pFuncion) {
         return this.ConPreguntas.getPreguntas(pPais, pFuncion);
     };
+    
+    this.getPreguntasSubSeccion = function (pIdSubSeccion, pFuncion) {
+        return this.ConPreguntas.getPreguntasSubSeccion(pIdSubSeccion, pFuncion);
+    }; 
 
-    this.agregarPreguntas = function (pObjeto, pFuncion) {
-        this.ConPreguntas.agregarPreguntas(pObjeto, pFuncion);
+    this.agregarPregunta = function (pObjeto, pFuncion) {
+        var mObjeto = {encabezado: pObjeto.encabezado, correcta: pObjeto.correcta, incorrecta_1: pObjeto.incorrecta_1,
+            incorrecta_2: pObjeto.incorrecta_2, incorrecta_3: "", fk_subseccion: pObjeto.fk_subseccion};
+
+        this.ConPreguntas.agregarPregunta(mObjeto, pFuncion);
     };
 };
 

@@ -13,55 +13,69 @@ ConexionDB = function () {
     this.user = "root";
     this.pass = "786Xenoblade786";
     this.db = "mydb";
-    
-    this.connection = null;
+
+    connection = null;
 
     this.conectar = function () {
-        this.connection = mysql.createConnection({
+        connection = mysql.createPool({
+            connectionLimit: 1000,
             host: this.host,
             user: this.user,
             password: this.pass,
             database: this.db
         });
-        this.connection.connect();
+        //connection.connect();
         //this.connection.escape();
     };
-    
-    this.CerrarConexion = function (){
-        this.connection.end();
+
+    this.CerrarConexion = function () {
+        connection.end();
     };
-    
-    this.getConexion = function(){
-        return this.connection;
+
+    this.getConexion = function () {
+        return connection;
     };
-    
-    this.getDatos = function(pQuery, callBack){
+
+    this.getDatos = function (pQuery, callBack) {
         console.log("Realizando un request" + pQuery);
-        this.connection.query(pQuery, function (err, rows) {
-            if (err) {
-                throw err;
-            } else {
-                //console.log(rows);
-                callBack(rows);
-            }
+        connection.getConnection(function (err, connection) {
+            connection.query(pQuery, function (err, rows) {
+                connection.release();
+                if (err) {
+                    throw err;
+                } else {
+                    callBack(rows);
+                }
+            });
         });
-        this.CerrarConexion();
     };
     
-    this.saveDato = function(pQuery, pObjeto, callBack){
-        this.connection.query(pQuery, pObjeto, function (err, rows) {
-            if (err) {
-                throw err;
-            } else {
-                callBack(rows);
-            }
+    this.getDatosSinInyection = function (pQuery, pDato, callBack) {
+        console.log("Realizando un request" + pQuery);
+        connection.getConnection(function (err, connection) {
+            connection.query(pQuery, [pDato], function (err, rows) {
+                connection.release();
+                if (err) {
+                    throw err;
+                } else {
+                    callBack(rows);
+                }
+            });
         });
-        this.CerrarConexion();
     };
-    
-    
-    
-    
+
+    this.saveDato = function (pQuery, pObjeto, callBack) {
+        connection.getConnection(function (err, connection) {
+            connection.query(pQuery, pObjeto, function (err, rows) {
+                connection.release();
+                if (err) {
+                    throw err;
+                } else {
+                    callBack(rows);
+                }
+            });
+        });
+    };
 };
 
 exports.ConexionDB = ConexionDB;

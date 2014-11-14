@@ -15,16 +15,20 @@ var ConexionPreguntas = function () {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
         //mConexion.getDatos("SELECT * FROM preguntas ORDER BY pk_preguntas LIMIT 20", callback);
-        mConexion.getDatos("SELECT * FROM (SELECT * FROM preguntas ORDER BY RAND()) as randomTable LIMIT 1", callback);
+        mConexion.getDatos("SELECT * FROM (SELECT pk_preguntas,encabezado,correcta,incorrecta_1,incorrecta_2  FROM preguntas ORDER BY RAND()) as randomTable LIMIT 1", callback);
+    };
+    
+    this.getPreguntasSubSeccion = function (pIdSubSeccion, callback) {
+        var mConexion = new conexionDB.ConexionDB();
+        mConexion.conectar();
+        //mConexion.getDatos("SELECT * FROM preguntas ORDER BY pk_preguntas LIMIT 20", callback);
+        mConexion.getDatosSinInyection("SELECT pk_preguntas, encabezado FROM preguntas WHERE fk_subseccion = ?", pIdSubSeccion, callback);
     };
 
     this.agregarPregunta = function (pObjeto, callback) {
-        var mObjeto = {encabezado: pObjeto.encabezado, correcta: pObjeto.correcta, incorrecta_1: pObjeto.incorrecta_1,
-            incorrecta_2: pObjeto.incorrecta_2, incorrecta_3: "", fk_subseccion: pObjeto.fk_subseccion };
-        
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
-        mConexion.saveDato("INSERT INTO preguntas SET ?", mObjeto, callback);
+        mConexion.saveDato("INSERT INTO preguntas SET ?", pObjeto, callback);
     };
 };
 

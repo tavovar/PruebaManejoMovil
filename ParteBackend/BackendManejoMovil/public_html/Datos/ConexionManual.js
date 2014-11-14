@@ -13,47 +13,47 @@ var ConexionManuales = function () {
     this.getManuales = function (callback) {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
-        mConexion.getDatos("select * from manuales", callback);
+            mConexion.getDatos("select pk_manual, nombre from manuales", callback);
     };
 
     this.agregarManual = function (pObjeto, callback) {
-        var mObjeto = {nombre: pObjeto.nombre, fk_pais: pObjeto.fk_pais };
-        
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
-        mConexion.saveDato("INSERT INTO manuales (nombre, fk_pais) SET ?", mObjeto, callback);
+        mConexion.saveDato("INSERT INTO manuales SET ?", pObjeto, callback);
     };
     
     this.getSecciones = function (pIdManual, callback) {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
-        var query = "select * from secciones WHERE pk_seccion=" + pIdManual;
+        var query = "select pk_seccion, nombre from secciones WHERE fk_manual=" + pIdManual;
         mConexion.getDatos(query, callback);
     };
     
     this.agregarSeccion = function (pObjeto, callback) {
-        var mObjeto = {nombre: pObjeto.nombre, fk_manual: pObjeto.fk_manual };
-        
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
-        mConexion.saveDato("INSERT INTO secciones (nombre, fk_manual) SET ?", mObjeto, callback);
+        mConexion.saveDato("INSERT INTO secciones SET ?", pObjeto, callback);
     };
     
     this.getSubSecciones = function (pIdSeccion, callback) {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
-        var query = "select * from subsecciones WHERE pk_subseccion=" + pIdSeccion;
+        var query = "select pk_subseccion, nombre from subsecciones WHERE fk_seccion=" + pIdSeccion;
         mConexion.getDatos(query, callback);
     };
     
     this.agregarSubseccion = function (pObjeto, callback) {
-        var mObjeto = {nombre: pObjeto.nombre, descripcion: pObjeto.descripcion, fk_seccion: pObjeto.fk_seccion };
-        
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
-        mConexion.saveDato("INSERT INTO subsecciones (nombre, descripcion, fk_pais) SET ?", mObjeto, callback);
+        mConexion.saveDato("INSERT INTO subsecciones SET ?", pObjeto, callback);
     };
     
+    this.getSubSeccion = function (pIdSubSeccion, callback) {
+        var mConexion = new conexionDB.ConexionDB();
+        mConexion.conectar();
+        var query = "select pk_subseccion, nombre, descripcion from subsecciones WHERE pk_subseccion=" + pIdSubSeccion;
+        mConexion.getDatos(query, callback);
+    };
 };
 
 exports.ConexionManuales = ConexionManuales;

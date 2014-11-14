@@ -11,6 +11,12 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="css/semantic.css">
         <link rel="stylesheet" type="text/css" href="css/Estilos.css">
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="javascript/ComunicacionServer/AjaxServer.js"></script> 
+        <script type="text/javascript" src="javascript/ComunicacionServer/Usuario.js"></script> 
+        <script type="text/javascript" src="javascript/Constantes/Constantes.js"></script> 
+        
     </head>
     <body>
         <br>
@@ -25,15 +31,17 @@ and open the template in the editor.
                     </div>
                     <div class="ui fluid form segment left aligned" style="margin-top: 15%;">
                         <h3 class="ui header">Log-in</h3>
-                        <div class="field">
-                            <label>Username</label>
-                            <input placeholder="Username" type="text">
-                        </div>
-                        <div class="field">
-                            <label>Password</label>
-                            <input type="password">
-                        </div>
-                        <div class="ui blue submit button" onclick="document.location='AdminManuales.html';">Login</div>
+                        <form method="post" action="http://localhost:3000/app/historiales">
+                            <div class="field">
+                                <label>Username</label>
+                                <input id="nombre" placeholder="Username" type="text" name="nombre">
+                            </div>
+                            <div class="field">
+                                <label>Password</label>
+                                <input id="contrasena" type="password" name="contrasena"> 
+                            </div>
+                            <div class="ui blue submit button" onclick="identificacionWeb();" >Login</div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -7,16 +7,35 @@
 var adminPreguntas = require('../Logica/AdminPreguntas.js');
 var servidor = require('./Servidor.js');
 
-ObtenerPreguntasTeoricas = function (req, res) {
-    console.log("Realizando un request");
-    var x = new adminPreguntas.AdminPreguntas();
+WebServicePregunta = function () {
+    var admin = new adminPreguntas.AdminPreguntas();
 
-    x.getPreguntas(1, function (data) {
-        servidor.responderJson(res, data);
-    });
+    this.ObtenerPreguntasTeoricas = function (req, res) {
+        console.log("Realizando un request");
+
+        admin.getPreguntas(1, function (data) {
+            servidor.responderJson(res, data);
+        });
+    };
+
+    this.AgregarPreguntaTeorica = function (req, res) {
+        console.log("Realizando un request");
+        admin.agregarPregunta(req.body, function (data) {
+            servidor.responderJson(res, data);
+        });
+    };
+
+    this.ObtenerPreguntasSubSeccion = function (req, res) {
+        var fk_subseccion = req.query.fk_subseccion;
+        if (fk_subseccion === undefined || fk_subseccion === '') {
+            servidor.responderJson(res, {"error": -1});
+            return;
+        }
+        admin.getPreguntasSubSeccion(fk_subseccion, function (data) {
+            servidor.responderJson(res, data);
+        });
+    };
+
 };
 
-
-
-
-exports.ObtenerPreguntasTeoricas = ObtenerPreguntasTeoricas;
+exports.WebServicePregunta = WebServicePregunta;

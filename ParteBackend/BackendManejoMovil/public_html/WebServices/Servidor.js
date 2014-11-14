@@ -6,12 +6,18 @@
 
 var lugares = require('./WebServiceLugares.js');
 var preguntas = require('./WebServicePreguntas.js');
+var ObjetoPregunta = new preguntas.WebServicePregunta();
+
 var manuales = require('./WebServiceManual.js');
+var ObjetoManual = new manuales.WebServiceManual();
+
 var historial = require('./WebServiceHistorial.js');
-var ObjetoHistorial = new historial.Historial();
+var ObjetoHistorial = new historial.WebServiceHistorial();
+
+var paises = require('./WebServicePaises.js');
+var ObjetoPais = new paises.WebServicePais();
 
 var usuarios = require('./WebServiceUsuarios.js');
-
 var x = new usuarios.WebServiceUsuario();
 
 //var usuario = require('./WebServiceUsuarios.js');
@@ -28,15 +34,37 @@ app.use(methodOverride());
 
 var router = express.Router();
 
+//----------------------------------------------------------------------------------
+//          Web services para la aplicacion movil 
+//----------------------------------------------------------------------------------
 
+//GETS
 
-router.get('/app/preguntas', preguntas.ObtenerPreguntasTeoricas);
+router.get('/app/preguntas', ObjetoPregunta.ObtenerPreguntasTeoricas);
 router.get('/app/lugares', lugares.ObtenerLugaresSucursales);
-router.get('/app/manuales', manuales.ObtenerManuales);
 router.get('/app/historiales', ObjetoHistorial.ObtenerHistorial);
+router.get('/app/manuales', ObjetoManual.ObtenerManuales);
+router.get('/app/secciones', ObjetoManual.ObtenerSecciones);
+router.get('/app/subsecciones', ObjetoManual.ObtenerSubsecciones);
+router.get('/app/subseccion', ObjetoManual.ObtenerSubseccion);
+router.get('/app/paises', ObjetoPais.getPaises);
 
-router.post('/usuariosweb', x.IdentificarseWeb);
+//POST
 router.post('/app/historiales', ObjetoHistorial.guardarHistorial);
+router.post('/app/manuales', ObjetoManual.AgregarManual);
+router.post('/app/secciones', ObjetoManual.AgregarSeccion);
+router.post('/app/subsecciones', ObjetoManual.AgregarSubseccion);
+
+//----------------------------------------------------------------------------------
+//          Web services para la pagina web  
+//----------------------------------------------------------------------------------
+
+//GETS
+router.get('/web/preguntas', ObjetoPregunta.ObtenerPreguntasSubSeccion);
+
+//POTS
+router.post('/web/usuariosweb', x.IdentificarseWeb);
+router.post('/web/preguntas', ObjetoPregunta.AgregarPreguntaTeorica);
 
 app.all('/', function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -46,14 +74,13 @@ app.all('/', function (req, res, next) {
 
 app.use(router);
 
-app.listen(3000, function () {
-    console.log("Node server running on http://localhost:3000");
+app.listen(80, function () {
+    console.log("Node server running on http://localhost:80");
 });
 
 function responderJson(res, dataJson) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    
     if (dataJson === null) {
         res.send({"error": -1});
     }

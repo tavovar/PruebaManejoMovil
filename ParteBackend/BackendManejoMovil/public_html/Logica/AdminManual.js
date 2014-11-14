@@ -13,24 +13,30 @@ AdminManual = function () {
     };
 
     this.agregarManual = function (pObjeto, callback) {
-        this.ConManuales.agregarManual(pObjeto, callback);
+        var mObjeto = {nombre: pObjeto.nombre, fk_pais: parseInt(pObjeto.fk_pais)};
+        this.ConManuales.agregarManual(mObjeto, callback);
     };
 
     this.getSecciones = function (pIdManual, callback) {
         this.ConManuales.getSecciones(pIdManual, callback);
-
     };
 
     this.agregarSeccion = function (pObjeto, callback) {
-        this.ConManuales.agregarSeccion(pObjeto, callback);
+        var mObjeto = {nombre: pObjeto.nombre, fk_manual: pObjeto.fk_manual};
+        this.ConManuales.agregarSeccion(mObjeto, callback);
     };
 
-    this.getSubSecciones = function (pIdSeccion, callback) {
+    this.getSubsecciones = function (pIdSeccion, callback) {
         this.ConManuales.getSubSecciones(pIdSeccion, callback);
     };
 
     this.agregarSubseccion = function (pObjeto, callback) {
-        this.ConManuales.agregarSubseccion(pObjeto, callback);
+        var mObjeto = {nombre: pObjeto.nombre, descripcion: pObjeto.descripcion, fk_seccion: parseInt(pObjeto.fk_seccion)};
+        this.ConManuales.agregarSubseccion(mObjeto, callback);
+    };
+    
+    this.getSubseccion = function (pIdSubseccion, callback) {
+        this.ConManuales.getSubSeccion(pIdSubseccion, callback);
     };
 };
 

@@ -8,7 +8,7 @@
 var adminHistorial = require('../Logica/AdminHistorial.js');
 var servidor = require('./Servidor.js');
 
-Historial = function () {
+WebServiceHistorial = function () {
 
     this.ObtenerHistorial = function (req, res) {
         var admin = new adminHistorial.AdminHistorial();
@@ -30,4 +30,4 @@ Historial = function () {
 
 };
 
-exports.Historial = Historial;
+exports.WebServiceHistorial = WebServiceHistorial;
