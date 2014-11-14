@@ -50,8 +50,11 @@ public class menu extends Activity {
     }
 
     public void callResultados(View view) {
-        //Log.d("Lab1", "Estoy en el callMaps()");
-        Intent intent = new Intent(getApplicationContext(), Resultados.class);
+
+    }
+
+    public void callPruebaPractica(View view) {
+        Intent intent = new Intent(getApplicationContext(), preguntasInstruciones.class);
         startActivity(intent);
     }
 

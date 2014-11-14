@@ -8,6 +8,7 @@
 var adminManual = require('../Logica/AdminManual.js');
 var servidor = require('./Servidor.js');
 
+
 WebServiceManual = function () {
     var admin = new adminManual.AdminManual();
 

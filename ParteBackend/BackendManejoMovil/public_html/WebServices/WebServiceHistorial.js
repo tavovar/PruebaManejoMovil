@@ -9,7 +9,6 @@ var adminHistorial = require('../Logica/AdminHistorial.js');
 var servidor = require('./Servidor.js');
 
 WebServiceHistorial = function () {
-
     this.ObtenerHistorial = function (req, res) {
         var admin = new adminHistorial.AdminHistorial();
         admin.getTodoHistorial(function (data) {

@@ -10,6 +10,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="indicaciones1">El test teórico cuenta con 40 preguntas, aunque no hay límite de tiempo, recuerde que es un factor importante a la hora de realizar la verdadera prueba teórica de manejo</string>
     <string name="indicaciones2">Cada pregunta contiene 3 respuestas, donde solo una es correcta, si desea consultar un tema puede hacerlo en la misma pregunta, pues se provee la sección del manual donde viene dicho tema</string>
+    <string name="indicaciones3">El test práctico cuenta con 20 preguntas, en este test usted deberá realizar maniobras interactivas con su celular como si este fuera el volante de su vehículo.</string>
+    <string name="indicaciones4">Cada pregunta contiene solo una interacción correcta, si desea obtener ayuda de las iteraciones de este test diríjase a la opción de ayuda ubicada en la parte superior derecha de su pantalla.</string>
     <string name="iniciar">Iniciar</string>
     <string name="correctas">Correctas</string>
     <string name="incorrectas">Incorrectas</string>
@@ -37,5 +39,8 @@
     <string name="desearecibirrespuesta">Deseo recibir respuesta</string>
     <string name="sugerenciasInstrucciones">Danos un consejo o sugierenos una nueva pregunta</string>
     <string name="title_activity_resultados">Resultados</string>
+    <string name="restriccionessugerencia">La sugerencia debe ser mínimo de 10 caracteres y el email de 8</string>
+    <string name="title_activity_preguntas_practicas">PreguntasPracticas</string>
+    <string name="title_activity_preguntas_instruciones">preguntasInstruciones</string>
 
 </resources>

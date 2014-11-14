@@ -12,12 +12,14 @@ var manuales = require('./WebServiceManual.js');
 var ObjetoManual = new manuales.WebServiceManual();
 
 var historial = require('./WebServiceHistorial.js');
+
 var ObjetoHistorial = new historial.WebServiceHistorial();
 
 var paises = require('./WebServicePaises.js');
 var ObjetoPais = new paises.WebServicePais();
 
 var usuarios = require('./WebServiceUsuarios.js');
+
 var x = new usuarios.WebServiceUsuario();
 
 //var usuario = require('./WebServiceUsuarios.js');
@@ -33,6 +35,7 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 var router = express.Router();
+
 
 //----------------------------------------------------------------------------------
 //          Web services para la aplicacion movil 

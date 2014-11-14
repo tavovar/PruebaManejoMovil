@@ -34,6 +34,14 @@ public class Constantes {
     public static int tipoPractico = 2;
 
 
+    // CONSTANTES DE JSON RESULTADOS PRUEBAS
+    public static String idUsuarioSugerencia = "fk_usuario";
+    public static String sugerencia = "sugerencia";
+    public static String email = "email";
+    public static int respuestaSugerenciaSi = 1;
+    public static int respuestaSugerenciaNo = 0;
+    public static String respuestaSugerencia = "respuesta";
+
     // CONSTANTES DE URL
     public static String URLPreguntas = "http://www.pruebamanejomovil.com/app/preguntas";
     public static String URLLugares = "http://www.pruebamanejomovil.com/app/lugares";

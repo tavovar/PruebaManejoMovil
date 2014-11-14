@@ -13,12 +13,14 @@ var ConexionManuales = function () {
     this.getManuales = function (callback) {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
-            mConexion.getDatos("select pk_manual, nombre from manuales", callback);
+
+        mConexion.getDatos("select pk_manual, nombre from manuales", callback);
     };
 
     this.agregarManual = function (pObjeto, callback) {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
+
         mConexion.saveDato("INSERT INTO manuales SET ?", pObjeto, callback);
     };
     
@@ -32,6 +34,7 @@ var ConexionManuales = function () {
     this.agregarSeccion = function (pObjeto, callback) {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
+
         mConexion.saveDato("INSERT INTO secciones SET ?", pObjeto, callback);
     };
     

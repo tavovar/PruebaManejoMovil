@@ -30,6 +30,7 @@ ConexionDB = function () {
 
     this.CerrarConexion = function () {
         connection.end();
+
     };
 
     this.getConexion = function () {
@@ -48,6 +49,7 @@ ConexionDB = function () {
                 }
             });
         });
+        this.CerrarConexion();
     };
     
     this.getDatosSinInyection = function (pQuery, pDato, callBack) {
@@ -62,6 +64,7 @@ ConexionDB = function () {
                 }
             });
         });
+        this.CerrarConexion();
     };
 
     this.saveDato = function (pQuery, pObjeto, callBack) {

@@ -1,24 +1,26 @@
 package com.example.gustavovargas.movilv20;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
-public class Resultados extends Activity {
+public class preguntasInstruciones extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_resultados);
+        setContentView(R.layout.activity_preguntas_instruciones);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.resultados, menu);
+        getMenuInflater().inflate(R.menu.preguntas_instruciones, menu);
         return true;
     }
 
@@ -32,5 +34,10 @@ public class Resultados extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void iniciarTestPractico(View view) {
+        Intent intent = new Intent(getApplicationContext(), PreguntasPracticas.class);
+        startActivity(intent);
     }
 }

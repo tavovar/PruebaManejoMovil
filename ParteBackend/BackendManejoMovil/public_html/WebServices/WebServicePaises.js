@@ -8,14 +8,16 @@
 var adminPaises = require('../Logica/AdminPaises.js');
 var servidor = require('./Servidor.js');
 
+
 WebServicePais = function () {
     var admin = new adminPaises.AdminPaises();
 
     this.getPaises = function (req, res) {
         admin.getPaises(function (data) {
-            servidor.responderJson(res, data);
+			servidor.responderJson(res, data);
         });
     };
 };
+
 
 exports.WebServicePais = WebServicePais;
