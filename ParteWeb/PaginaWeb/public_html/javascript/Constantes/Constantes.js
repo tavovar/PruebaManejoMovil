@@ -5,8 +5,8 @@
  */
 
 
-var kNombreServidor = "http://localhost:";
-//var kNombreServidor = "http://pruebamanejomovil.com";
+//var kNombreServidor = "http://localhost:";
+var kNombreServidor = "http://pruebamanejomovil.com:";
 
 var prefijoApp = "8080/app/";
 var prefijoWeb = "8080/web/";
