@@ -10,12 +10,18 @@ var sideBar= '<div class="ui vertical menu">\
                             Pruebas Teoricas\
                         </div>\
                         <a class="{0} item" href="AdminPreguntas.html">\
-                            Preguntas\
+                            Preguntas Teóricas\
+                        </a>\
+                        <a class="{7} item" href="AdminPreguntasDinamicas.html">\
+                            Preguntas Dinámicas\
                         </a>\
                         <div class="header item">\
                             <i class="book icon"></i>\
                             Información\
                         </div>\
+                        <a class="{8} item" href="AdminPaises.html">\
+                            Paises\
+                        </a>\
                         <a class="{1} item" href="AdminManuales.html">\
                             Manuales\
                         </a>\
@@ -33,10 +39,17 @@ var sideBar= '<div class="ui vertical menu">\
                             Sucursales\
                         </a>\
                         <div class="header item">\
+                            <i class="comment outline icon"></i>\
+                            Sugerencias\
+                        </div>\
+                        <a class="{6} item" href="AdminConsultas.html">\
+                            Ver Consultas\
+                        </a>\
+                        <div class="header item">\
                             <i class="user icon"></i>\
                             Usuarios\
                         </div>\
-                        <a class="{5} item" href="index.html">\
+                        <a class="{5} item" onclick="CerrarSesion();">\
                             Salir\
                         </a>\
                 </div>';

@@ -11,20 +11,29 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="css/semantic.css">
         <link rel="stylesheet" type="text/css" href="css/Estilos.css">
-        <script type="text/javascript" src="javascript/funciones.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="javascript/CargarInterfaz/BarraNavegacion.js"></script>
+        <script type="text/javascript" src="javascript/CargarInterfaz/CargarElementosInterfaz.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js"></script>
-        <script type="text/javascript" src="javascript/googleMap.js"></script>        
-    </head>
+        <script type="text/javascript" src="javascript/googleMap.js"></script>  
+
+        <script type="text/javascript" src="javascript/ComunicacionServer/AjaxServer.js"></script>
+        <script type="text/javascript" src="javascript/ComunicacionServer/Pais.js"></script>
+        <script type="text/javascript" src="javascript/ComunicacionServer/Sucursales.js"></script>
+        <script type="text/javascript" src="javascript/Constantes/Constantes.js"></script>
+
+    </head> 
     <body>
         <br><br>
-        <div class="ui celled grid">
+        <div class="ui grid">
             <div class="row">
-                <div id="sideBar" class="two wide column center aligned">
+                <div id="sideBar" class="three wide column">
                 </div>
                 <script>
                     getSideBar(4);
                 </script>
-                <div class="ten wide column">
+                <div class="thirteen wide column">
                     <div class="ui form segment ">
                         <h1>Sección de Sucursales</h1>
                         <br>
@@ -32,35 +41,69 @@ and open the template in the editor.
                             <h2>Agregar Sucursales</h2>
                             <div class="row MarginSubSubTitulo">
                                 Nombre:
+                                <br><br>
                                 <div class="MarginSubTitulo" style="width: 45%;">
-                                    <input type="text" placeholder="Escribir el nombre">
+                                    <input id="txtNombre" type="text" placeholder="Escribir el nombre">
                                 </div>
                                 <br>
                                 Lugar:
+                                <br><br>
                                 <div class="MarginSubTitulo" style="width: 45%;">
-                                    <input type="text" placeholder="Escribir el lugar">
+                                    <input id="txtLugar" type="text" placeholder="Escribir el lugar">
                                 </div>
                                 <br>
                                 Teléfono:
+                                <br><br>
                                 <div class="MarginSubTitulo" style="width: 45%;">
-                                    <input type="tel" placeholder="Escriba el teléfono de la sucursal">
+                                    <input id="txtTelefono" type="tel" placeholder="Escriba el teléfono de la sucursal">
                                 </div>
                                 <br>
-                                Posición geográfica:
+                                País:
+                                <select id="dpPaises" class="ui button tiny">
+                                    <option value="volvo"> No hay países  </option>
+                                </select>
+                                <br><br>
+                                Posición geográfica (Coloque una marca en el mapa):
+                                <br><br>
                                 <div id="map_canvas" ></div>
+                                <br>
+                                <div class="two fields wide four">
+                                    <div class="field">
+                                        <label>Latitud</label>
+                                        <input id="latFld" placeholder="Latitud" type="text">
+                                    </div>
+                                    <div class="field">
+                                        <label>Longitud</label>
+                                        <input id="lngFld" placeholder="Longitud" type="text">
+                                    </div>
+                                </div>
+                                <br><br>
+                                <div class="ui grid ">
+                                    <div class="row">
+                                        <div class="eight wide column floated right">
+                                            <div class="ui secondary button tiny" onclick="AgregarSucursales();">
+                                                Agregar
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <br>
                             <h2>Sucursales Agregadas</h2>
                             <div class="row MarginSubSubTitulo" >
                                 Seleccione una sucursal:
-                                <select class="ui button tiny">
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
-                                    <option value="mercedes">Mercedes</option>
-                                    <option value="audi">Audi</option>
+                                <select id="dpSucursalesAgregadas" class="ui button tiny">
+                                    <option value="volvo">No hay Sucursales</option>
                                 </select>
-                                <div class="ui primary button tiny">
-                                    Eliminar
+                                <br><br>
+                                <div class="ui grid ">
+                                    <div class="row">
+                                        <div class="eight wide column floated right">
+                                            <div class="ui primary button tiny" onclick="EliminarSucursal();">
+                                                Eliminar
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -68,6 +111,8 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
-
+        <script>
+            CargarElementosSucursales();
+        </script>
     </body>
 </html>

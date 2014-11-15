@@ -11,6 +11,7 @@ function identificacionWeb() {
     var mData = {"nombre": mNombre, "contrasena": mContrasena};
     HacerPost(kNombreServidor + kNombreUsuarios, mData, function (data) {
         if (true === data) {
+            localStorage.setItem("Autentificado",1);
             document.location = "AdminPreguntas.html";
         }
         else {

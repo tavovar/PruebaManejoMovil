@@ -6,72 +6,66 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Administrar Secciones</title>
+        <title>Administrar Paises</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="css/semantic.css">
         <link rel="stylesheet" type="text/css" href="css/Estilos.css">
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script type="text/javascript" src="javascript/CargarInterfaz/BarraNavegacion.js"></script>
         <script type="text/javascript" src="javascript/CargarInterfaz/CargarElementosInterfaz.js"></script>
         <script type="text/javascript" src="javascript/ComunicacionServer/AjaxServer.js"></script>
-        <script type="text/javascript" src="javascript/ComunicacionServer/Manual.js"></script>
+        <script type="text/javascript" src="javascript/ComunicacionServer/Pais.js"></script>
         <script type="text/javascript" src="javascript/Constantes/Constantes.js"></script>
 
     </head>
     <body>
         <br><br>
-        <div class="ui grid ">
+        <div class="ui  grid">
             <div class="row">
-                <div id="sideBar" class="three wide column ">
+                <div id="sideBar" class="three wide column">
                 </div>
                 <script>
-                    getSideBar(2);
+                    getSideBar(8);
                 </script>
                 <div class="thirteen wide column">
-                    <div class="ui segment">
-                        <h1>Sección de secciones</h1>
-
+                    <div class="ui form segment ">
+                        <h1>Sección de paises</h1>
+                        <br>
                         <div class="MarginSubTitulo">
-                            Seleccione un manual:
-                            <select id="dpManualesAgregados" class=" ui button tiny" onchange="getSeccionesAux(document.getElementById('dpManualesAgregados').options[document.getElementById('dpManualesAgregados').selectedIndex].value, function (data) {
-                                        CargarDropDownList('dpSeccionesAgregadosEliminar', 'nombre', 'pk_seccion', data);
-                                    });">
-
-                                <option value="1">Manuales</option>
-                            </select>
-                            <h2>Agregar sección</h2>
+                            <h2>Agregar país</h2>
+                            <br>
                             <div class="row MarginSubSubTitulo">
                                 <div class="ui input" style="width: 45%;">
                                     Nombre:
                                     <br><br>
-                                    <input id="txtNom" type="text" placeholder="Escriba el nombre de la sección">
+                                    <input id="txtNom" type="text" placeholder="Escriba el nombre del país">
                                 </div>
                                 <br><br>
                                 <div class="ui grid ">
                                     <div class="row">
                                         <div class="eight wide column floated right">
-                                            <div class="ui secondary button tiny" onclick="addSeccion();">
+                                            <div class="ui secondary button tiny" onclick="addPaises();">
                                                 Agregar
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-                            <h2>Eliminar sección</h2>
                             <br>
-
+                            <h2>Paises agregados</h2>
+                            <br>
                             <div class="row MarginSubSubTitulo">
-                                Seleccione una sección:
-                                <select id="dpSeccionesAgregadosEliminar" class="ui button tiny">
-                                    <option value="volvo">Secciones</option>
+                                Seleccione un país:
+                                <select id="idDropPaises" class="ui button tiny">
+                                    <option value="volvo">No hay paises</option>
                                 </select>
                                 <br><br>
                                 <div class="ui grid ">
                                     <div class="row">
                                         <div class="eight wide column floated right">
-                                            <div class="ui primary button tiny " onclick="borrarSeccion();">
+                                            <div class="ui primary button tiny" onclick="borrarPais();">
                                                 Eliminar
                                             </div>
                                         </div>
@@ -84,7 +78,7 @@ and open the template in the editor.
             </div>
         </div>
         <script>
-            CargarElementosSecciones();
+            CargarPaises();
         </script>
     </body>
 </html>

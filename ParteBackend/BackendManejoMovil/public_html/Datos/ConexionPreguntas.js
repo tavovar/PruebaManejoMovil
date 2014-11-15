@@ -17,7 +17,7 @@ var ConexionPreguntas = function () {
         //mConexion.getDatos("SELECT * FROM preguntas ORDER BY pk_preguntas LIMIT 20", callback);
         mConexion.getDatos("SELECT * FROM (SELECT pk_preguntas,encabezado,correcta,incorrecta_1,incorrecta_2  FROM preguntas ORDER BY RAND()) as randomTable LIMIT 1", callback);
     };
-    
+
     this.getPreguntasSubSeccion = function (pIdSubSeccion, callback) {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
@@ -29,6 +29,31 @@ var ConexionPreguntas = function () {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
         mConexion.saveDato("INSERT INTO preguntas SET ?", pObjeto, callback);
+    };
+
+    this.agregarPreguntaDinamica = function (pObjeto, callback) {
+        var mConexion = new conexionDB.ConexionDB();
+        mConexion.conectar();
+        mConexion.saveDato("INSERT INTO preguntas_dinamicas SET ?", pObjeto, callback);
+    };
+
+    this.getPreguntasDinamicas = function (callback) {
+        var mConexion = new conexionDB.ConexionDB();
+        mConexion.conectar();
+        //mConexion.getDatos("SELECT * FROM preguntas ORDER BY pk_preguntas LIMIT 20", callback);
+        mConexion.getDatos("SELECT * FROM preguntas_dinamicas", callback);
+    };
+
+    this.borrarPreguntas = function (pIdPregunta, callback) {
+        var mConexion = new conexionDB.ConexionDB();
+        mConexion.conectar();
+        mConexion.getDatosSinInyection("DELETE FROM preguntas WHERE pk_preguntas = ?", pIdPregunta, callback);
+    };
+
+    this.borrarPreguntasDinamicas = function (pIdPreguntaDinamica, callback) {
+        var mConexion = new conexionDB.ConexionDB();
+        mConexion.conectar();
+        mConexion.getDatosSinInyection("DELETE FROM preguntas_dinamicas WHERE pk_pregunta_dinamica = ?", pIdPreguntaDinamica, callback);
     };
 };
 

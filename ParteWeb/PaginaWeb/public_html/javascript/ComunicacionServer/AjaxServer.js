@@ -12,12 +12,21 @@ function HacerGet(pUrl, pData, pFuncion) {
     SolicitudAjax("GET", pUrl, pData, pFuncion);
 }
 
+function HacerDelete(pUrl, pData, pFuncion) {
+    //SolicitudAjax("DELETE", pUrl, pData, pFuncion);
+    $.ajax({
+        url: pUrl,
+        type: 'DELETE',
+        success: pFuncion
+    });
+}
+
 function SolicitudAjax(pTipoMetodo, pUrl, pData, pFuncion) {
     $.ajax({
         type: pTipoMetodo,
         url: pUrl,
         data: pData,
         success: pFuncion,
-        dataType: "json" 
+        dataType: "json"
     });
 }

@@ -12,6 +12,15 @@ AdminPaises = function () {
     this.getPaises = function (pFuncion) {
         return this.ConPaises.getPaises(pFuncion);
     };
+    
+    this.agregarPais = function (pObjeto, pFuncion) {
+        var mObjeto = {nombre:pObjeto.nombre};
+        return this.ConPaises.agregarPais(mObjeto, pFuncion);
+    };
+
+    this.borrarPais = function (pIdPais, pFuncion) {
+        return this.ConPaises.borrarPais(pIdPais, pFuncion);
+    };
 };
 
 exports.AdminPaises = AdminPaises;

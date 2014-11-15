@@ -4,13 +4,23 @@
 // is probably because you have denied permission for location sharing.
 
 var map;
+var markersArray = [];
 
 function initialize() {
     var mapOptions = {
-        zoom: 10
+        zoom: 15
     };
-    map = new google.maps.Map(document.getElementById('map_canvas'),
-            mapOptions);
+    map = new google.maps.Map(document.getElementById('map_canvas'),mapOptions);
+
+    google.maps.event.addListener(map, "click", function (event)
+    {
+        // place a marker
+        placeMarker(event.latLng);
+
+        // display the lat/lng in your form's lat/lng fields
+        document.getElementById("latFld").value = event.latLng.lat();
+        document.getElementById("lngFld").value = event.latLng.lng();
+    });
 
     // Try HTML5 geolocation
     if (navigator.geolocation) {
@@ -20,7 +30,8 @@ function initialize() {
 
             var infowindow = new google.maps.InfoWindow({
                 map: map,
-                position: pos
+                position: pos,
+                zoom: 45
                         //content: 'Location found using HTML5.'
             });
             map.setCenter(pos);
@@ -48,6 +59,32 @@ function handleNoGeolocation(errorFlag) {
 
     var infowindow = new google.maps.InfoWindow(options);
     map.setCenter(options.position);
+}
+
+
+function placeMarker(location) {
+    // first remove all markers if there are any
+    deleteOverlays();
+
+    var marker = new google.maps.Marker({
+        position: location,
+        map: map
+    });
+
+    // add marker in markers array
+    markersArray.push(marker);
+
+    //map.setCenter(location);
+}
+
+// Deletes all markers in the array by removing references to them
+function deleteOverlays() {
+    if (markersArray) {
+        for (i in markersArray) {
+            markersArray[i].setMap(null);
+        }
+        markersArray.length = 0;
+    }
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

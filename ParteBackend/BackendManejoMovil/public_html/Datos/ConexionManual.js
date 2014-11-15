@@ -57,6 +57,27 @@ var ConexionManuales = function () {
         var query = "select pk_subseccion, nombre, descripcion from subsecciones WHERE pk_subseccion=" + pIdSubSeccion;
         mConexion.getDatos(query, callback);
     };
+    
+    this.borrarManual = function (pIdManual, callback) {
+        var mConexion = new conexionDB.ConexionDB();
+        mConexion.conectar();
+        var query = "DELETE FROM manuales WHERE pk_manual = ?";
+        mConexion.getDatosSinInyection(query, pIdManual, callback);
+    };
+    
+    this.borrarSeccion = function (pIdSeccion, callback) {
+        var mConexion = new conexionDB.ConexionDB();
+        mConexion.conectar();
+        var query = "DELETE FROM secciones WHERE pk_seccion = ?";
+        mConexion.getDatosSinInyection(query, pIdSeccion, callback);
+    };
+    
+    this.borrarSeccion = function (pIdSubseccion, callback) {
+        var mConexion = new conexionDB.ConexionDB();
+        mConexion.conectar();
+        var query = "DELETE FROM subsecciones WHERE pk_subseccion = ?";
+        mConexion.getDatosSinInyection(query, pIdSubseccion, callback);
+    };
 };
 
 exports.ConexionManuales = ConexionManuales;

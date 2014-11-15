@@ -24,7 +24,7 @@ and open the template in the editor.
         <br><br>
         <div class="ui grid">
             <div class="row">
-                <div id="sideBar" class="three wide column left aligned">
+                <div id="sideBar" class="three wide column">
                 </div>
                 <script>
                     getSideBar(3);
@@ -36,16 +36,12 @@ and open the template in the editor.
 
                         <div class="MarginSubTitulo">
                             Seleccione un manual:
-                            <select id="dpManualesAgregados" class=" ui button tiny" onchange="getSeccionesAux(document.getElementById('dpManualesAgregados').options[document.getElementById('dpManualesAgregados').selectedIndex].value, function (data) {
-                                        CargarDropDownList('dpSeccionesAgregados', 'nombre', 'pk_seccion', data);
-                                    });">
+                            <select id="dpManualesAgregados" class=" ui button tiny" onchange="CargarSeccionesInterfaz();">
                                 <option value="1">Manuales</option>
                             </select>
                             <br><br>
                             Seleccione una sección:
-                            <select id="dpSeccionesAgregados" class="ui button tiny" onchange="getSubseccionesAux(document.getElementById('dpSeccionesAgregados').options[document.getElementById('dpSeccionesAgregados').selectedIndex].value, function (data) {
-                                        CargarDropDownList('dpSubseccionesAgregados', 'nombre', 'pk_subseccion', data);
-                                    });">
+                            <select id="dpSeccionesAgregados" class="ui button tiny"  onchange="CargarSubSeccionesInterfaz();">
                                 <option value="volvo">Secciones</option>
                             </select>
                             <br><br>
@@ -83,7 +79,7 @@ and open the template in the editor.
                                 <div class="ui grid ">
                                     <div class="row">
                                         <div class="eight wide column floated right">
-                                            <div class="ui primary button tiny ">
+                                            <div class="ui primary button tiny " onclick="borrarSubseccion();">
                                                 Eliminar
                                             </div>
                                         </div>
@@ -96,7 +92,7 @@ and open the template in the editor.
             </div>
         </div>
         <script>
-            CargarElementosSubsecciones();
+            CargarManualesInterfaz();
         </script>
     </body>
 </html>

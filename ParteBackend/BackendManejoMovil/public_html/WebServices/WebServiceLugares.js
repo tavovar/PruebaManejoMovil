@@ -7,12 +7,31 @@
 var AdminLugares = require('../Logica/AdminLugares.js');
 var servidor = require('./Servidor.js');
 
-ObtenerLugaresSucursales = function (req, res) {
-    var x = new AdminLugares.AdminLugares();
+WebServiceLugar = function () {
+    var admin = new AdminLugares.AdminLugares();
 
-    x.getLugares(1, function (data) {
-        servidor.responderJson(res, data);
-    });
+    this.ObtenerLugaresSucursales = function (req, res) {
+        admin.getLugares(1, function (data) {
+            servidor.responderJson(res, data);
+        });
+    };
+
+    this.AgregarSucursal = function (req, res) {
+        admin.agregarLugar(req.body, function (data) {
+            servidor.responderJson(res, data);
+        });
+    };
+
+    this.EliminarLugar = function (req, res) {
+        var pk_sucursal = req.query.pk_sucursal;
+        if (pk_sucursal === undefined || pk_sucursal === '') {
+            servidor.responderJson(res, {"error": -1});
+            return;
+        }
+        admin.borrarLugar(pk_sucursal, function (data) {
+            servidor.responderJson(res, data);
+        });
+    };
 };
 
-exports.ObtenerLugaresSucursales = ObtenerLugaresSucursales;
+exports.WebServiceLugar = WebServiceLugar;

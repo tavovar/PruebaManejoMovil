@@ -3,81 +3,78 @@
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script type="text/javascript" src="javascript/semantic.js"></script>
-
 -->
 <html>
     <head>
-        <title>Administrar Manuales</title>
+        <title>Administrar de preguntas dinámicas</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="css/semantic.css">
         <link rel="stylesheet" type="text/css" href="css/Estilos.css">
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script type="text/javascript" src="javascript/CargarInterfaz/BarraNavegacion.js"></script>
         <script type="text/javascript" src="javascript/CargarInterfaz/CargarElementosInterfaz.js"></script>
         <script type="text/javascript" src="javascript/ComunicacionServer/AjaxServer.js"></script>
-        <script type="text/javascript" src="javascript/ComunicacionServer/Pais.js"></script>
-        <script type="text/javascript" src="javascript/ComunicacionServer/Manual.js"></script>
-        <script type="text/javascript" src="javascript/Constantes/Constantes.js"></script>
+        <script type="text/javascript" src="javascript/ComunicacionServer/PreguntasDinamicas.js"></script>
 
+        <script type="text/javascript" src="javascript/Constantes/Constantes.js"></script>
     </head>
     <body>
         <br><br>
-        <div class="ui  grid">
+        <div class="ui grid">
             <div class="row">
                 <div id="sideBar" class="three wide column">
                 </div>
                 <script>
-                    getSideBar(1);
+                    getSideBar(7);
                 </script>
+
                 <div class="thirteen wide column">
                     <div class="ui form segment ">
-                        <h1>Sección de manuales</h1>
+                        <h1>Sección de Preguntas Dinámicas</h1>
                         <br>
                         <div class="MarginSubTitulo">
-                            <h2>Agregar manuales</h2>
+                            <h2>Agregar una pregunta dinámica</h2>
                             <br>
                             <div class="row MarginSubSubTitulo">
-                                Seleccione un país:
-                                <br><br>
-                                <select id="idDropPaises" class="ui button tiny">
-                                    <option value="volvo">No hay paises registrados</option>
-                                </select>
                                 <p>
-                                <div class="ui input" style="width: 45%;">
-                                    Nombre:
+                                <form id="eventForm" class="ui input" style="width: 75%;" 
+                                      enctype="multipart/form-data" method="post">
+                                    Imagen:
                                     <br><br>
-                                    <input id="txtNom" type="text" placeholder="Escriba el nombre del manual">
-                                </div>
-                                <br><br>
-                                <div class="ui grid ">
-                                    <div class="row">
-                                        <div class="eight wide column floated right">
-                                            <div class="ui secondary button tiny" onclick="addManuales();">
-                                                Agregar
+                                    <div class="MarginSubTitulo">
+                                        <input id="ipImagen" type="file" name="displayImage" >
+                                        <br><br>
+                                        <img id="imMuestra" class="ui image" src="">
+                                    </div>
+                                    <br>
+                                    Respuesta correcta:<br>
+                                    <br><br>
+                                    <div class="MarginSubTitulo">
+                                        <input id="correcta" type="number" placeholder="Respuesta correcta" name="AccionCorrecta">
+                                    </div>
+                                    <br><br>
+                                    <div class="ui grid ">
+                                        <div class="row">
+                                            <div class="four wide column floated right">
+                                                <input class="button ui red" type="submit" value="Agregar">
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
+                                </form>
                             </div>
                             <br>
-                            <h2>Manuales agregados</h2>
+                            <h2>Preguntas Dinámicas Agregadas</h2>
                             <br>
                             <div class="row MarginSubSubTitulo">
-                                Seleccione un manual:
-                                <br><br>
-                                <select id="dpManualesAgregador" class="ui button tiny">
-                                    <option value="volvo">No hay Manuales</option>
+                                Seleccione una pregunta
+                                <select id="dpPreguntasDinamicas" class="ui button tiny">
+                                    <option value="volvo">No hay preguntas</option>
                                 </select>
-                                <br><br>
                                 <div class="ui grid ">
                                     <div class="row">
                                         <div class="eight wide column floated right">
-                                            <div class="ui primary button tiny" onclick="borrarManual();">
+                                            <div class="ui primary button tiny " onclick="EliminarPreguntaDinamica();">
                                                 Eliminar
                                             </div>
                                         </div>
@@ -90,8 +87,8 @@ and open the template in the editor.
             </div>
         </div>
         <script>
-            CargarElementosManuales();
+            CargarPreguntasDinamicas();
         </script>
+        <script type="text/javascript" src="javascript/ComunicacionServer/PreguntasDinamicas.js"></script>
     </body>
 </html>
-

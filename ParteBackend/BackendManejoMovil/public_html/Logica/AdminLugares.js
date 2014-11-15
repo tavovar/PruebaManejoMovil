@@ -13,7 +13,12 @@ AdminLugares = function () {
     };
 
     this.agregarLugar = function (pLugar, pFuncion) {
-        this.ConLugares.agregarLugar(pLugar, pFuncion);
+        var mObjeto = {nombre: pLugar.nombre, lugar: pLugar.lugar, latitud: pLugar.latitud, longitud: pLugar.longitud, telefono: pLugar.telefono, fk_pais: pLugar.fk_pais};
+        this.ConLugares.agregarLugar(mObjeto, pFuncion);
+    };
+
+    this.borrarLugar = function (pIdLugar, callback) {
+        this.ConLugares.borrarLugar(parseInt(pIdLugar), callback);
     };
 
 };

@@ -4,10 +4,15 @@
  * and open the template in the editor.
  */
 
- var UbicacionServer = "C:\\Users\\Ney Rojas\\Documents\\GitHub\\PruebaManejoMovil\\ParteWeb\\PaginaWeb\\";
- //var UbicacionServer = ".\Server";
+var Constantes = require('../Constantes/Constantes.js');
+var ObjetoConstantes = new Constantes.Constantes();
+
+var consultas = require('./WebServiceConsultas.js');
+var ObjetoConsulta = new consultas.WebServiceConsulta();
 
 var lugares = require('./WebServiceLugares.js');
+var ObjetoLugares = new lugares.WebServiceLugar();
+
 var preguntas = require('./WebServicePreguntas.js');
 var ObjetoPregunta = new preguntas.WebServicePregunta();
 
@@ -37,6 +42,14 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(methodOverride());
 
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Headers", "Content-Type");
+    res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
+    next();
+});
+
 var router = express.Router();
 
 
@@ -47,7 +60,7 @@ var router = express.Router();
 //GETS
 
 router.get('/app/preguntas', ObjetoPregunta.ObtenerPreguntasTeoricas);
-router.get('/app/lugares', lugares.ObtenerLugaresSucursales);
+router.get('/app/lugares', ObjetoLugares.ObtenerLugaresSucursales);
 router.get('/app/historiales', ObjetoHistorial.ObtenerHistorial);
 router.get('/app/manuales', ObjetoManual.ObtenerManuales);
 router.get('/app/secciones', ObjetoManual.ObtenerSecciones);
@@ -56,10 +69,22 @@ router.get('/app/subseccion', ObjetoManual.ObtenerSubseccion);
 router.get('/app/paises', ObjetoPais.getPaises);
 
 //POST
+
+router.post('/app/lugares', ObjetoLugares.AgregarSucursal);
 router.post('/app/historiales', ObjetoHistorial.guardarHistorial);
 router.post('/app/manuales', ObjetoManual.AgregarManual);
 router.post('/app/secciones', ObjetoManual.AgregarSeccion);
 router.post('/app/subsecciones', ObjetoManual.AgregarSubseccion);
+router.post('/app/paises', ObjetoPais.agregarPais);
+
+
+//DELETE
+
+router.delete('/app/lugares', ObjetoLugares.EliminarLugar);
+router.delete('/app/manuales', ObjetoManual.EliminarManual);
+router.delete('/app/secciones', ObjetoManual.EliminarSeccion);
+router.delete('/app/subsecciones', ObjetoManual.EliminarSubseccion);
+router.delete('/app/paises', ObjetoPais.borrarPais);
 
 //----------------------------------------------------------------------------------
 //          Web services para la pagina web  
@@ -67,22 +92,35 @@ router.post('/app/subsecciones', ObjetoManual.AgregarSubseccion);
 
 //GETS
 router.get('/web/preguntas', ObjetoPregunta.ObtenerPreguntasSubSeccion);
+router.get('/web/preguntas_dinamicas', ObjetoPregunta.ObtenerTodasPreguntasDinamicas);
+router.get('/web/consultas', ObjetoConsulta.ObtenerConsultas);
+router.get('/web/consulta', ObjetoConsulta.ObtenerConsulta);
 
 //POTS
 router.post('/web/usuariosweb', x.IdentificarseWeb);
 router.post('/web/preguntas', ObjetoPregunta.AgregarPreguntaTeorica);
+router.post('/web/preguntas_dinamicas', ObjetoPregunta.AgregarPreguntaDinamica);
+router.post('/web/consulta', ObjetoConsulta.ResolverConsulta);
+
+//DELETE
+router.delete('/web/preguntas', ObjetoPregunta.EliminarPregunta);
+router.delete('/web/preguntas_dinamicas', ObjetoPregunta.EliminarPreguntaDinamica);
+router.delete('/web/consulta', ObjetoConsulta.EliminarConsulta);
 
 app.all('/', function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Headers", "Content-Type");
+    res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
     next();
 });
 
 app.use(router);
 
-app.listen(80, function () {
-    console.log("Node server running on http://localhost:80");
+app.listen(8080, function () {
+    console.log("Node server running on http://localhost:8080");
 });
+
 
 function responderJson(res, dataJson) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -96,6 +134,43 @@ function responderJson(res, dataJson) {
 }
 
 exports.responderJson = responderJson;
+
+var http = require('http');
+var path = require('path');
+var fs = require('fs');
+http.createServer(function (request, response) {
+    console.log('request starting...');
+
+    var filePath = ObjetoConstantes.UbicacionServidorWeb;
+    var ArchivosSolicitado = filePath + request.url;
+    if (request.url === '/')
+        ArchivosSolicitado = filePath + '/index.html';
+
+    console.log(ArchivosSolicitado);
+
+    fs.exists(ArchivosSolicitado, function (exists) {
+        if (exists) {
+            fs.readFile(ArchivosSolicitado, function (error, content) {
+                if (error) {
+                    response.writeHead(500);
+                    response.end();
+                }
+                else {
+                    response.writeHead(200);
+                    response.end(content, 'utf-8');
+                }
+            });
+        }
+        else {
+            response.writeHead(404);
+            response.end();
+        }
+    });
+
+}).listen(80);
+
+
+console.log('Server running at http://127.0.0.1:8125/');
 
 //var connect = require('connect');
 //var serveStatic = require('serve-static');

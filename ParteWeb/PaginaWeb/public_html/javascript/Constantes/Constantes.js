@@ -5,12 +5,37 @@
  */
 
 
-var kNombreServidor="http://localhost:80/";
+var kNombreServidor = "http://localhost:";
+//var kNombreServidor = "http://pruebamanejomovil.com";
 
-var kNombrePaises="app/paises";
-var kNombreManuales="app/manuales";
-var kNombreSecciones="app/secciones";
-var kNombreSubsecciones="app/subsecciones";
-var kNombrePreguntas="web/preguntas";
+var prefijoApp = "8080/app/";
+var prefijoWeb = "8080/web/";
 
-var kNombreUsuarios="web/usuariosweb";
+var kNombrePaises = prefijoApp + "paises";
+var kNombreLugares = prefijoApp + "lugares";
+var kNombreManuales = prefijoApp + "manuales";
+var kNombreSecciones = prefijoApp + "secciones";
+var kNombreSubsecciones = prefijoApp + "subsecciones";
+
+var kNombrePreguntas = prefijoWeb + "preguntas";
+var kNombrePreguntasDinamicas = prefijoWeb + "preguntas_dinamicas";
+var kNombreConsultas = prefijoWeb + "consultas";
+var kNombreConsulta = prefijoWeb + "consulta";
+var kNombreUsuarios = prefijoWeb + "usuariosweb";
+
+
+//Autentificacion de la pagina web
+
+if (document.location.pathname.split('/').pop() !== "index.html") {
+    if (localStorage.getItem("Autentificado") === null || localStorage.getItem("Autentificado") === '0') {
+        document.location = "index.html";
+    }
+}
+
+
+
+function CerrarSesion() {
+    localStorage.setItem("Autentificado", 0);
+
+    document.location = "index.html";
+}

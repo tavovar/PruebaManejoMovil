@@ -34,10 +34,23 @@ AdminManual = function () {
         var mObjeto = {nombre: pObjeto.nombre, descripcion: pObjeto.descripcion, fk_seccion: parseInt(pObjeto.fk_seccion)};
         this.ConManuales.agregarSubseccion(mObjeto, callback);
     };
-    
+
     this.getSubseccion = function (pIdSubseccion, callback) {
         this.ConManuales.getSubSeccion(pIdSubseccion, callback);
     };
+
+    this.borrarManual = function (pIdManual, callback) {
+        this.ConManuales.borrarManual(pIdManual, callback);
+    };
+
+    this.borrarSeccion = function (pIdSeccion, callback) {
+        this.ConManuales.borrarSeccion(pIdSeccion, callback);
+    };
+
+    this.borrarSeccion = function (pIdSubseccion, callback) {
+        this.ConManuales.borrarSeccion(pIdSubseccion, callback);
+    };
+
 };
 
 exports.AdminManual = AdminManual;

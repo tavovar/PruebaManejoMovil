@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Administrar Consultas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/semantic.css">
+        <link rel="stylesheet" type="text/css" href="css/Estilos.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="javascript/CargarInterfaz/BarraNavegacion.js"></script>
+        <script type="text/javascript" src="javascript/CargarInterfaz/CargarElementosInterfaz.js"></script>
+        <script type="text/javascript" src="javascript/ComunicacionServer/AjaxServer.js"></script>
+        <script type="text/javascript" src="javascript/ComunicacionServer/Consultas.js"></script>
+        <script type="text/javascript" src="javascript/Constantes/Constantes.js"></script>
+
+    </head>
+    <body>
+        <br><br>
+        <div class="ui grid">
+            <div class="row">
+                <div id="sideBar" class="three wide column">
+                </div>
+                <script>
+                    getSideBar(6);
+                </script>
+                <div class="thirteen wide column">
+                    <div class="ui form segment ">
+                        <h1>Sección de consulas</h1>
+                        <br>
+                        <div class="MarginSubTitulo">
+                            <h2>Consultas enviadas</h2>
+                            <div class="ui grid">
+                                <div class="row">
+                                    <div id="sideBar" class="five wide column">
+                                        <div style="height:400px;width:300px;border:solid 0px orange;overflow:scroll;overflow-x:hidden;overflow-y:scroll;">
+                                            <div id="listaConsultas" class="ui animated selection list">
+                                                <div class="item">
+                                                    <img class="ui avatar image" src="images/18590.png">
+                                                    <div class="content">
+                                                        <div class="header">No hay asuntos pendientes</div>
+                                                        No hay asuntos pendientes
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="eleven wide column">
+                                        <div class="ui  form segment">
+                                            <div class="two fields">
+                                                <div class="field">
+                                                    <label>Asunto</label>
+                                                    <input type="hidden" id="idConsulta">
+                                                    <input id="txtAsunto" placeholder="Asunto" readonly type="text">
+                                                </div>
+                                                <div class="field">
+                                                    <label>Correo</label>
+                                                    <input id="txtCorreo" placeholder="Correo " readonly type="text">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label>Descripcion</label>
+                                                <textarea id="txtDescripcion" readonly placeholder="Descripcion del mensaje"></textarea>
+                                            </div>
+                                            
+                                            <div id="btnEliminar" class="ui red submit button" onclick="EliminarConsulta();">Eliminar</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+            </div>
+        </div>
+        <script >
+           CargarElementosConsultas();
+        </script>
+    </body>
+</html>

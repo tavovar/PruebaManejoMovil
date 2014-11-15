@@ -38,13 +38,14 @@ ConexionDB = function () {
         console.log("Realizando un request" + pQuery);
         pool.getConnection(function (err, connection) {
             if (err) {
-                throw err;
+                console.log(err);
+                connection.release();
             }
             else {
                 connection.query(pQuery, function (err, rows) {
                     connection.release();
                     if (err) {
-                        throw err;
+                        console.log(err);
                     } else {
                         callBack(rows);
                     }
@@ -59,7 +60,7 @@ ConexionDB = function () {
             connection.query(pQuery, [pDato], function (err, rows) {
                 connection.release();
                 if (err) {
-                    throw err;
+                    console.log(err);
                 } else {
                     callBack(rows);
                 }
@@ -72,7 +73,7 @@ ConexionDB = function () {
             connection.query(pQuery, pObjeto, function (err, rows) {
                 connection.release();
                 if (err) {
-                    throw err;
+                    console.log(err);
                 } else {
                     callBack(rows);
                 }

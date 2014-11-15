@@ -17,13 +17,15 @@ var ConexionLugares = function () {
     };
 
     this.agregarLugar = function (pLugar, callback) {
-
-        var mObjeto = {nombre: pLugar.nombre, latitud: pLugar.latitud, longitud: pLugar.longitud, telefono: pLugar.telefono, fk_pais: pLugar.fk_pais};
-        
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
-        mConexion.saveDato("INSERT INTO sucursales SET ?", mObjeto, callback);
-
+        mConexion.saveDato("INSERT INTO sucursales SET ?", pLugar, callback);
+    };
+    
+    this.borrarLugar = function (pLugar, callback) {
+        var mConexion = new conexionDB.ConexionDB();
+        mConexion.conectar();
+        mConexion.getDatosSinInyection("DELETE FROM sucursales WHERE pk_sucursal = ?", pLugar, callback);
     };
 };
 

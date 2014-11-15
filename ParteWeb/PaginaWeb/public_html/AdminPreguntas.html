@@ -24,7 +24,7 @@ and open the template in the editor.
         <br><br>
         <div class="ui grid">
             <div class="row">
-                <div id="sideBar" class="three wide column center aligned">
+                <div id="sideBar" class="three wide column">
                 </div>
                 <script>
                     getSideBar(0);
@@ -36,66 +36,77 @@ and open the template in the editor.
                         <br>
                         <div class="MarginSubTitulo">
                             Seleccione un manual:
-                            <select id="dpManualesAgregados" class=" ui button tiny" onchange="getSeccionesAux(document.getElementById('dpManualesAgregados').options[document.getElementById('dpManualesAgregados').selectedIndex].value, function (data) {
-                                        CargarDropDownList('dpSeccionesAgregados', 'nombre', 'pk_seccion', data);
-                                    });">
+                            <select id="dpManualesAgregados" class=" ui button tiny" onchange="CargarSeccionesInterfaz();">
                                 <option value="1">Manuales</option>
                             </select>
                             <br><br>
                             Seleccione una sección:
-                            <select id="dpSeccionesAgregados" class="ui button tiny" onchange="getSubseccionesAux(document.getElementById('dpSeccionesAgregados').options[document.getElementById('dpSeccionesAgregados').selectedIndex].value, function (data) {
-                                        CargarDropDownList('dpSubseccionesAgregados', 'nombre', 'pk_subseccion', data);
-                                    });">
+                            <select id="dpSeccionesAgregados" class="ui button tiny"  onchange="CargarSubSeccionesInterfaz();">
                                 <option value="volvo">Secciones</option>
                             </select>
                             <br><br>
                             Seleccione una subsección:
-                            <select id="dpSubseccionesAgregados" class="ui button tiny">
+                            <select id="dpSubseccionesAgregados" class="ui button tiny" onchange="CargarPreguntasTeoricas();">
                                 <option value="volvo">Subsecciones</option>
                             </select>
                             <br><br>
                             <h2>Agregar una pregunta</h2>
                             <br>
                             <div class="row MarginSubSubTitulo">
-							<p>
+                                <p>
                                 <div class="ui input" style="width: 75%;">
                                     Descripcón:
+                                    <br><br>
                                     <div class="MarginSubTitulo">
                                         <textarea id="txtDescripcion" placeholder="Escriba la descripción de la pregunta"></textarea>
                                     </div>
                                     <br>
                                     Opción correcta:
+                                    <br><br>
                                     <div class="MarginSubTitulo">
                                         <input id="correcta" type="text" placeholder="Respuesta correcta">
                                     </div>
                                     <br>
                                     Opción incorrecta:
+                                    <br><br>
                                     <div class="MarginSubTitulo">
                                         <input id="incorrecta1" type="text" placeholder="Respuesta incorrecta">
                                     </div>
                                     <br>
                                     Opción incorrecta:
+                                    <br><br>
                                     <div class="MarginSubTitulo">
                                         <input id="incorrecta2" type="text" placeholder="Respuesta incorrecta">
                                     </div>
                                     <br>
-                                    <div class="ui secondary button tiny" onclick="addPregunta();">
-										Agregar
+
+                                </div>
+                                <div class="ui grid ">
+                                    <div class="row">
+                                        <div class="five wide column floated right">
+                                            <div class="ui secondary button tiny" onclick="addPregunta();">
+                                                Agregar
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
                             </div>
                             <br>
                             <h2>Preguntas Agregadas</h2>
                             <br>
                             <div class="row MarginSubSubTitulo">
                                 Seleccione una Pregunta
-                                <select class="ui button tiny">
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
+                                <select id="dpPreguntas" class="ui button tiny">
+                                    <option value="volvo">No hay preguntas</option>
                                 </select>
-                                <div class="ui primary button tiny">
-                                    Eliminar
+                                <div class="ui grid ">
+                                    <div class="row">
+                                        <div class="five wide column floated right">
+                                            <div class="ui primary button tiny " onclick="EliminarPregunta();">
+                                                Eliminar
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +115,7 @@ and open the template in the editor.
             </div>
         </div>
         <script>
-            CargarElementosSubsecciones();
+            CargarManualesInterfaz();
         </script>
     </body>
 </html>
