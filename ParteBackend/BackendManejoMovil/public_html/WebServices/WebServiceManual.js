@@ -22,6 +22,12 @@ WebServiceManual = function () {
             servidor.responderJson(res, data);
         });
     };
+    
+    this.ObtenerTodosManuales = function (req, res) {
+        admin.getTodosManuales(function (data) {
+            servidor.responderJson(res, data);
+        });
+    };
 
     this.AgregarManual = function (req, res) {
         admin.agregarManual(req.body, function (data) {

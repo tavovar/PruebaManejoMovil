@@ -23,7 +23,7 @@ function addPregunta() {
     alert("Enviando la solicitud");
 
     var mData = {"encabezado": mDescripcion, "fk_subseccion": mIdSubseccion,
-        "correcta": incorrecta1, "incorrecta_1": incorrecta1, "incorrecta_2": incorrecta2};
+        "correcta": correcta, "incorrecta_1": incorrecta1, "incorrecta_2": incorrecta2};
 
     HacerPost(kNombreServidor + kNombrePreguntas, mData, function (data) {
         alert("Pregunta agregada");

@@ -16,6 +16,12 @@ var ConexionManuales = function () {
 
         mConexion.getDatosSinInyection("select pk_manual, nombre from manuales WHERE fk_pais = ?",fk_pais, callback);
     };
+    
+    this.getTodosManuales = function ( callback) {
+        var mConexion = new conexionDB.ConexionDB();
+        mConexion.conectar();
+        mConexion.getDatos("select pk_manual, nombre from manuales", callback);
+    };
 
     this.agregarManual = function (pObjeto, callback) {
         var mConexion = new conexionDB.ConexionDB();

@@ -60,6 +60,7 @@ var router = express.Router();
 //GETS
 
 router.get('/app/preguntas', ObjetoPregunta.ObtenerPreguntasTeoricas);
+router.get('/app/preguntas_dinamicas', ObjetoPregunta.ObtenerPreguntaDinamica);
 router.get('/app/lugares', ObjetoLugares.ObtenerLugaresSucursales);
 router.get('/app/historiales', ObjetoHistorial.ObtenerHistorial);
 router.get('/app/manuales', ObjetoManual.ObtenerManuales);
@@ -72,7 +73,6 @@ router.get('/app/paises', ObjetoPais.getPaises);
 
 router.post('/app/lugares', ObjetoLugares.AgregarSucursal);
 router.post('/app/historiales', ObjetoHistorial.guardarHistorial);
-router.post('/app/manuales', ObjetoManual.AgregarManual);
 router.post('/app/secciones', ObjetoManual.AgregarSeccion);
 router.post('/app/subsecciones', ObjetoManual.AgregarSubseccion);
 router.post('/app/paises', ObjetoPais.agregarPais);
@@ -81,7 +81,6 @@ router.post('/app/paises', ObjetoPais.agregarPais);
 //DELETE
 
 router.delete('/app/lugares', ObjetoLugares.EliminarLugar);
-router.delete('/app/manuales', ObjetoManual.EliminarManual);
 router.delete('/app/secciones', ObjetoManual.EliminarSeccion);
 router.delete('/app/subsecciones', ObjetoManual.EliminarSubseccion);
 router.delete('/app/paises', ObjetoPais.borrarPais);
@@ -95,17 +94,20 @@ router.get('/web/preguntas', ObjetoPregunta.ObtenerPreguntasSubSeccion);
 router.get('/web/preguntas_dinamicas', ObjetoPregunta.ObtenerTodasPreguntasDinamicas);
 router.get('/web/consultas', ObjetoConsulta.ObtenerConsultas);
 router.get('/web/consulta', ObjetoConsulta.ObtenerConsulta);
+router.get('/web/manuales', ObjetoManual.ObtenerTodosManuales);
 
 //POTS
 router.post('/web/usuariosweb', x.IdentificarseWeb);
 router.post('/web/preguntas', ObjetoPregunta.AgregarPreguntaTeorica);
 router.post('/web/preguntas_dinamicas', ObjetoPregunta.AgregarPreguntaDinamica);
 router.post('/web/consulta', ObjetoConsulta.ResolverConsulta);
+router.post('/web/manuales', ObjetoManual.AgregarManual);
 
 //DELETE
 router.delete('/web/preguntas', ObjetoPregunta.EliminarPregunta);
 router.delete('/web/preguntas_dinamicas', ObjetoPregunta.EliminarPreguntaDinamica);
 router.delete('/web/consulta', ObjetoConsulta.EliminarConsulta);
+router.delete('/web/manuales', ObjetoManual.EliminarManual);
 
 app.all('/', function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

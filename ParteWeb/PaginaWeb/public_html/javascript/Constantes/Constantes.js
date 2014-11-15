@@ -5,18 +5,18 @@
  */
 
 
-//var kNombreServidor = "http://localhost:";
-var kNombreServidor = "http://pruebamanejomovil.com:";
+var kNombreServidor = "http://localhost:";
+//var kNombreServidor = "http://pruebamanejomovil.com:";
 
 var prefijoApp = "8080/app/";
 var prefijoWeb = "8080/web/";
 
 var kNombrePaises = prefijoApp + "paises";
 var kNombreLugares = prefijoApp + "lugares";
-var kNombreManuales = prefijoApp + "manuales";
 var kNombreSecciones = prefijoApp + "secciones";
 var kNombreSubsecciones = prefijoApp + "subsecciones";
 
+var kNombreManuales = prefijoWeb + "manuales";
 var kNombrePreguntas = prefijoWeb + "preguntas";
 var kNombrePreguntasDinamicas = prefijoWeb + "preguntas_dinamicas";
 var kNombreConsultas = prefijoWeb + "consultas";

@@ -39,15 +39,14 @@ ConexionDB = function () {
         pool.getConnection(function (err, connection) {
             if (err) {
                 console.log(err);
-                connection.release();
             }
             else {
                 connection.query(pQuery, function (err, rows) {
-                    connection.release();
                     if (err) {
                         console.log(err);
                     } else {
                         callBack(rows);
+                        connection.release();
                     }
                 });
             }
@@ -58,11 +57,11 @@ ConexionDB = function () {
         console.log("Realizando un request" + pQuery);
         pool.getConnection(function (err, connection) {
             connection.query(pQuery, [pDato], function (err, rows) {
-                connection.release();
                 if (err) {
                     console.log(err);
                 } else {
                     callBack(rows);
+                    connection.release();
                 }
             });
         });
@@ -71,11 +70,11 @@ ConexionDB = function () {
     this.saveDato = function (pQuery, pObjeto, callBack) {
         pool.getConnection(function (err, connection) {
             connection.query(pQuery, pObjeto, function (err, rows) {
-                connection.release();
                 if (err) {
                     console.log(err);
                 } else {
                     callBack(rows);
+                    connection.release();
                 }
             });
         });

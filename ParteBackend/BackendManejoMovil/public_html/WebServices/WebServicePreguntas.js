@@ -82,6 +82,19 @@ WebServicePregunta = function () {
             servidor.responderJson(res, data);
         });
     };
+    
+    this.ObtenerPreguntaDinamica = function (req, res) {
+        var pk_usuario = req.query.pk_usuario;
+        var numero_pregunta = req.query.numero_pregunta;
+        if (pk_usuario === undefined || pk_usuario === '' ||
+                numero_pregunta === undefined || numero_pregunta === '' ) {
+            servidor.responderJson(res, {"error": -1});
+            return;
+        }
+        admin.getPreguntaDinamica(pk_usuario, numero_pregunta, function (data) {
+            servidor.responderJson(res, data);
+        });
+    };
 
     this.EliminarPregunta = function (req, res) {
         var pk_pregunta = req.query.pk_pregunta;

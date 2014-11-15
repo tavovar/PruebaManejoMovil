@@ -28,13 +28,16 @@ AdminPreguntas = function () {
     };
 
     this.agregarPreguntaDinamica = function (pObjeto, pFuncion) {
-
         var mObjeto = {ruta_imagen: pObjeto.ruta, accion: pObjeto.accion, velocidad: pObjeto.velocidad};
         this.ConPreguntas.agregarPreguntaDinamica(mObjeto, pFuncion);
     };
 
     this.getPreguntasDinamicas = function (pFuncion) {
         return this.ConPreguntas.getPreguntasDinamicas(pFuncion);
+    };
+  
+    this.getPreguntaDinamica = function (pIdUsuario, pNumeroPregunta, pFuncion) {
+        return this.ConPreguntas.getPreguntaDinamica(pIdUsuario, pFuncion);
     };
 
     this.borrarPreguntas = function (pIdPregunta, pFuncion) {

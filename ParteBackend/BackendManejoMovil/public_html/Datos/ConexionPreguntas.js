@@ -3,7 +3,45 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+function Random() {
+    this.usuarios = [];
 
+    this.AgregarUsuario = function (pIdUsuario) {
+        var numeros = [];
+        var mUsuario = {pIdUsuario: numeros};
+        this.usuarios.push(mUsuario);
+    };
+
+    this.BuscarRandom = function (pIdUsuario, pRandom) {
+        var mLargo = this.usuarios[pIdUsuario].length;
+        var mResultado = false;
+        for (var i = 0; i < mLargo; i++) {
+            if (this.usuarios[pIdUsuario][i] === pRandom) {
+                mResultado = true;
+                break;
+            }
+        }
+        return mResultado;
+    };
+
+    this.getRandom = function (pIdUsuario, pMinimo, pMaximo) {
+        if (this.usuarios[pIdUsuario] === null || this.usuarios[pIdUsuario] === undefined) {
+            return;
+        }
+        var random;
+        for (var i = 0; i < 10; i++) {
+            random = Math.floor(Math.random() * (pMaximo - pMinimo)) + pMinimo;
+            if (this.BuscarRandom(pIdUsuario,random)===false){
+                return;
+            }
+        }
+        console.log(this.usuarios);
+        this.usuarios[pIdUsuario].push(random);
+        return ramdom;
+    };
+}
+
+var VariablesRandom = new Random();
 
 var ConexionPreguntas = function () {
 
@@ -35,6 +73,25 @@ var ConexionPreguntas = function () {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
         mConexion.saveDato("INSERT INTO preguntas_dinamicas SET ?", pObjeto, callback);
+    };
+
+    this.getEliminarPreguntasDinamicasUsuario = function (pIdUsuario, callback) {
+        var mConexion = new conexionDB.ConexionDB();
+        mConexion.conectar();
+        mConexion.getDatosSinInyection("DELETE FROM preguntas_enviadas WHERE pk_usuario = ?", pIdUsuario, callback);
+    };
+
+    this.getPreguntaDinamica = function (pIdUsuario, callback) {
+        var mConexion = new conexionDB.ConexionDB();
+        mConexion.conectar();
+        mConexion.getDatos("SELECT MAX(pk_pregunta_dinamica), MIN(pk_pregunta_dinamica) FROM preguntas_dinamicas", function (pFilas) {
+            var Maximo = pFilas[0]['MAX(pk_pregunta_dinamica)'] + 1;
+            var Minimo = pFilas[0]['MIN(pk_pregunta_dinamica)'];
+
+            var ramdom = VariablesRandom.getRandom(1, Minimo, Maximo);
+
+            callback(ramdom + "");
+        });
     };
 
     this.getPreguntasDinamicas = function (callback) {

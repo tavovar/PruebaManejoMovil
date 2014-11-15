@@ -11,6 +11,10 @@ AdminManual = function () {
     this.getManuales = function (fk_pais, callback) {
         this.ConManuales.getManuales(fk_pais, callback);
     };
+    
+    this.getTodosManuales = function (callback) {
+        this.ConManuales.getTodosManuales( callback);
+    };
 
     this.agregarManual = function (pObjeto, callback) {
         var mObjeto = {nombre: pObjeto.nombre, fk_pais: parseInt(pObjeto.fk_pais)};
