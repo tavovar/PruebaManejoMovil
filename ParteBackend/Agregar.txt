@@ -1,0 +1,4 @@
+
+use mydb;
+
+ALTER TABLE preguntas_dinamicas ADD velocidad INT;

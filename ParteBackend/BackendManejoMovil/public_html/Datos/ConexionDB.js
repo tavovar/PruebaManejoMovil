@@ -11,8 +11,8 @@ ConexionDB = function () {
 
     this.host = "localhost";
     this.user = "root";
-    this.pass = "786Xenoblade786";
-    //this.pass = "Fantasia7";
+    //this.pass = "786Xenoblade786";
+    this.pass = "Fantasia7";
     this.db = "mydb";
 
     var pool;

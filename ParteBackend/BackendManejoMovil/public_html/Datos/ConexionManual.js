@@ -10,11 +10,11 @@ var ConexionManuales = function () {
 
     this.conexion = null;
 
-    this.getManuales = function (callback) {
+    this.getManuales = function (fk_pais, callback) {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
 
-        mConexion.getDatos("select pk_manual, nombre from manuales", callback);
+        mConexion.getDatosSinInyection("select pk_manual, nombre from manuales WHERE fk_pais = ?",fk_pais, callback);
     };
 
     this.agregarManual = function (pObjeto, callback) {

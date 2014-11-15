@@ -15,7 +15,7 @@ var ConexionPreguntas = function () {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
         //mConexion.getDatos("SELECT * FROM preguntas ORDER BY pk_preguntas LIMIT 20", callback);
-        mConexion.getDatos("SELECT * FROM (SELECT pk_preguntas,encabezado,correcta,incorrecta_1,incorrecta_2  FROM preguntas ORDER BY RAND()) as randomTable LIMIT 1", callback);
+        mConexion.getDatos("SELECT * FROM (SELECT pk_preguntas,encabezado,correcta,incorrecta_1,incorrecta_2,fk_subseccion  FROM preguntas ORDER BY RAND()) as randomTable LIMIT 1", callback);
     };
 
     this.getPreguntasSubSeccion = function (pIdSubSeccion, callback) {

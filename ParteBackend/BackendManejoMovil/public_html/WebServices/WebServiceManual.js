@@ -13,7 +13,12 @@ WebServiceManual = function () {
     var admin = new adminManual.AdminManual();
 
     this.ObtenerManuales = function (req, res) {
-        admin.getManuales(function (data) {
+        var fk_pais = req.query.fk_pais;
+        if (fk_pais === undefined || fk_pais === '') {
+            servidor.responderJson(res, {"error": -1});
+            return;
+        }
+        admin.getManuales(fk_pais, function (data) {
             servidor.responderJson(res, data);
         });
     };

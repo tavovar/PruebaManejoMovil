@@ -51,6 +51,7 @@ WebServicePregunta = function () {
             console.log(fields.AccionCorrecta[0]);
 
             var mAccionCorrecta = fields.AccionCorrecta[0];
+            var mVelocidad = fields.velocidad[0];
             var file = files.displayImage[0];
 
             var temporal_path = file.path;
@@ -60,7 +61,7 @@ WebServicePregunta = function () {
             input_stream.pipe(output_stream);
 
 
-            mObjeto = {accion: mAccionCorrecta, ruta: file.originalFilename};
+            mObjeto = {accion: mAccionCorrecta, ruta: file.originalFilename, velocidad: mVelocidad};
             input_stream.on('end', function () {
                 console.log('Uploaded : ' + destination_path);
                 admin.agregarPreguntaDinamica(mObjeto, function (data) {

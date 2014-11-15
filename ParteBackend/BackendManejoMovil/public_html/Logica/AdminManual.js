@@ -8,8 +8,8 @@ AdminManual = function () {
     var conexionManuales = require('../Datos/ConexionManual.js');
     this.ConManuales = new conexionManuales.ConexionManuales();
 
-    this.getManuales = function (callback) {
-        this.ConManuales.getManuales(callback);
+    this.getManuales = function (fk_pais, callback) {
+        this.ConManuales.getManuales(fk_pais, callback);
     };
 
     this.agregarManual = function (pObjeto, callback) {

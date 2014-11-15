@@ -29,8 +29,7 @@ AdminPreguntas = function () {
 
     this.agregarPreguntaDinamica = function (pObjeto, pFuncion) {
 
-        var mObjeto = {ruta_imagen: pObjeto.ruta, accion: parseInt(pObjeto.accion)};
-        console.log(mObjeto);
+        var mObjeto = {ruta_imagen: pObjeto.ruta, accion: pObjeto.accion, velocidad: pObjeto.velocidad};
         this.ConPreguntas.agregarPreguntaDinamica(mObjeto, pFuncion);
     };
 
