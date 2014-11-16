@@ -26,11 +26,13 @@ AdminUsuarios = function () {
         if (pObjeto.tipo_usuario===undefined){
             pObjeto = JSON.parse(pObjeto);
         }
-        var AutoReferencia = this;
-        var mObjeto = {tipo_usuario:pObjeto.tipo_usuario, id_usuario: pObjeto.id_red_social};
+        var ConexionBase = this.ConUsuarios ;
+        var mObjeto = {tipo_usuario: pObjeto.tipo_usuario, id_red_social: pObjeto.id_red_social};
         this.IdentificarUsuarioApp(mObjeto,function(pFilas){
              if (pFilas.length === 0) {
-                 AutoReferencia.agregarUsuario(mObjeto, pFuncion);
+                 ConexionBase.agregarUsuario(mObjeto, function (pFilas){
+                     ConexionBase.existeUsuario(mObjeto,pFuncion);
+                 });
             }
             else {
                 pFuncion(pFilas);
@@ -43,7 +45,7 @@ AdminUsuarios = function () {
         if (pObjeto.tipo_usuario===undefined){
             pObjeto = JSON.parse(pObjeto);
         }
-        var mObjeto = {tipo_usuario:pObjeto.tipo_usuario, id_usuario: pObjeto.id_red_social};
+        var mObjeto = {tipo_usuario:pObjeto.tipo_usuario, id_red_social: pObjeto.id_red_social};
         this.ConUsuarios.existeUsuario(mObjeto, pFuncion);
     };
 };

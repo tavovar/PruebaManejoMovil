@@ -23,7 +23,7 @@ WebServiceUsuario = function () {
 
     this.RegistrarUsuario = function (req, res) {
         admin.registraUsuario(req.body.Json, function (pFilas) {
-            servidor.responderJson(pFilas, false);
+            servidor.responderJson(res, pFilas);
         });
     };
 
@@ -33,7 +33,7 @@ WebServiceUsuario = function () {
                 servidor.responderJson(res, true);
             }
             else {
-                servidor.responderJson(pFilas, false);
+                servidor.responderJson(res, false);
             }
         });
     };
