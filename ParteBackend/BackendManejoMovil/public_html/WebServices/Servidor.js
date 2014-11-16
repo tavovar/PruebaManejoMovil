@@ -27,7 +27,7 @@ var ObjetoPais = new paises.WebServicePais();
 
 var usuarios = require('./WebServiceUsuarios.js');
 
-var x = new usuarios.WebServiceUsuario();
+var ObjetoUsuarios = new usuarios.WebServiceUsuario();
 
 //var usuario = require('./WebServiceUsuarios.js');
 
@@ -78,7 +78,7 @@ router.post('/app/historiales', ObjetoHistorial.guardarHistorial);
 router.post('/app/secciones', ObjetoManual.AgregarSeccion);
 router.post('/app/subsecciones', ObjetoManual.AgregarSubseccion);
 router.post('/app/paises', ObjetoPais.agregarPais);
-
+router.post('/app/usuarios', ObjetoUsuarios.RegistrarUsuario);
 
 //DELETE
 
@@ -99,7 +99,7 @@ router.get('/web/consulta', ObjetoConsulta.ObtenerConsulta);
 router.get('/web/manuales', ObjetoManual.ObtenerTodosManuales);
 
 //POTS
-router.post('/web/usuariosweb', x.IdentificarseWeb);
+router.post('/web/usuariosweb', ObjetoUsuarios.IdentificarseWeb);
 router.post('/web/preguntas', ObjetoPregunta.AgregarPreguntaTeorica);
 router.post('/web/preguntas_dinamicas', ObjetoPregunta.AgregarPreguntaDinamica);
 router.post('/web/consulta', ObjetoConsulta.ResolverConsulta);
