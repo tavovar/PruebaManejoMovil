@@ -25,7 +25,7 @@ function SolicitudAjax(pTipoMetodo, pUrl, pData, pFuncion) {
     if (pData === null || pData === undefined || pData === ""){
         pData = {};
     }
-    pData["identificacion"] = "Esta es la clave de la solicitud";
+    pData["identificacion"] = Constantes.kPassIdentificacion;
     $.ajax({
         type: pTipoMetodo,
         url: pUrl,
