@@ -13,6 +13,14 @@ var AdminHistorial = function () {
     this.getTodoHistorial = function (pIdUsuario, callback) {
         this.ConHistorial.getTodoHistorial(pIdUsuario, callback);
     };
+    
+    this.getHistorialSemanas = function (pIdUsuario, callback) {
+        this.ConHistorial.getHistorialSemanas(pIdUsuario, callback);
+    };
+    
+    this.getHistorialMeses = function (pIdUsuario, callback) {
+        this.ConHistorial.getHistorialMeses(pIdUsuario, callback);
+    };
 
     this.agregarHistorial = function (pObjeto, callback) {
         var mObjeto = {tipo: pObjeto.tipo, preguntas_correctas: pObjeto.preguntas_correctas, fk_usuario: pObjeto.fk_usuario, fecha:pObjeto.fecha};

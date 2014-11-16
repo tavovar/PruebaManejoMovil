@@ -12,7 +12,7 @@ WebServiceHistorial = function () {
     var admin = new adminHistorial.AdminHistorial();
 
     this.ObtenerHistorial = function (req, res) {
-//        var mObjeto = {tipo: 1, preguntas_correctas: 6, fk_usuario: 1, fecha:"2014-12-02"};
+//        var mObjeto = {tipo: 1, preguntas_correctas: 15, fk_usuario: 1, fecha:"2014-09-03"};
 //        admin.agregarHistorial(mObjeto, function (data) {
 //            servidor.responderJson(res, data);
 //        });
@@ -23,6 +23,28 @@ WebServiceHistorial = function () {
         }
 
         admin.getTodoHistorial(fk_usuario, function (data) {
+            servidor.responderJson(res, data);
+        });
+    };
+    
+    this.ObtenerHistorialSemanas = function (req, res) {
+        var fk_usuario = req.query.fk_usuario;
+        if (fk_usuario === undefined || fk_usuario === '') {
+            servidor.responderJson(res, {"error": -1});
+            return;
+        }
+        admin.getHistorialSemanas(fk_usuario, function (data) {
+            servidor.responderJson(res, data);
+        });
+    };
+    
+    this.ObtenerHistorialMeses = function (req, res) {
+        var fk_usuario = req.query.fk_usuario;
+        if (fk_usuario === undefined || fk_usuario === '') {
+            servidor.responderJson(res, {"error": -1});
+            return;
+        }
+        admin.getHistorialMeses(fk_usuario, function (data) {
             servidor.responderJson(res, data);
         });
     };
