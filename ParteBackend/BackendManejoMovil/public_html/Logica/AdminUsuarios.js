@@ -26,8 +26,17 @@ AdminUsuarios = function () {
         if (pObjeto.tipo_usuario===undefined){
             pObjeto = JSON.parse(pObjeto);
         }
+        var AutoReferencia = this;
         var mObjeto = {tipo_usuario:pObjeto.tipo_usuario, id_usuario: pObjeto.id_red_social};
-        this.ConUsuarios.agregarUsuario(mObjeto, pFuncion);
+        this.IdentificarUsuarioApp(mObjeto,function(pFilas){
+             if (pFilas.length === 0) {
+                 AutoReferencia.agregarUsuario(mObjeto, pFuncion);
+            }
+            else {
+                pFuncion(pFilas);
+            }
+        });
+       
     };
     
     this.IdentificarUsuarioApp = function(pObjeto, pFuncion){
