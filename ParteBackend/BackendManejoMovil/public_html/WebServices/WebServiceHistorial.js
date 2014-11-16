@@ -29,8 +29,11 @@ WebServiceHistorial = function () {
 
     this.guardarHistorial = function (req, res) {
         console.log("agregando historial");
-        console.log(req.body.Json);
-        admin.agregarHistorial(req.body.Json, function (data) {
+        if (req.body.Json === "") {
+            servidor.responderJson(res, {"error": -1});
+            return;
+        }
+        admin.agregarHistorial(JSON.parse(req.body.Json), function (data) {
             servidor.responderJson(res, data);
         });
     };
