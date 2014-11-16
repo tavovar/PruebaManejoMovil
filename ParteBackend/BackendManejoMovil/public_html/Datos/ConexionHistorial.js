@@ -20,6 +20,7 @@ var ConexionHistorial = function () {
     this.agregarHistorial = function (pObjeto, callback) {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
+        console.log(pObjeto);
         mConexion.saveDato("INSERT INTO historiales SET ?", pObjeto, callback);
 
     };

@@ -20,7 +20,6 @@ var manuales = require('./WebServiceManual.js');
 var ObjetoManual = new manuales.WebServiceManual();
 
 var historial = require('./WebServiceHistorial.js');
-
 var ObjetoHistorial = new historial.WebServiceHistorial();
 
 var paises = require('./WebServicePaises.js');

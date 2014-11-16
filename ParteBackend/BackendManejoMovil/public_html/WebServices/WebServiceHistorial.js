@@ -10,9 +10,19 @@ var servidor = require('./Servidor.js');
 
 WebServiceHistorial = function () {
     var admin = new adminHistorial.AdminHistorial();
-    
+
     this.ObtenerHistorial = function (req, res) {
-        admin.getTodoHistorial(function (data) {
+//        var mObjeto = {tipo: 1, preguntas_correctas: 6, fk_usuario: 1, fecha:"2014-12-02"};
+//        admin.agregarHistorial(mObjeto, function (data) {
+//            servidor.responderJson(res, data);
+//        });
+        var fk_usuario = req.query.fk_usuario;
+        if (fk_usuario === undefined || fk_usuario === '') {
+            servidor.responderJson(res, {"error": -1});
+            return;
+        }
+
+        admin.getTodoHistorial(fk_usuario, function (data) {
             servidor.responderJson(res, data);
         });
     };
