@@ -94,7 +94,7 @@ router.get('/app/paises', ObjetoPais.getPaises);
 
 //POST
 
-router.post('/app/consultas', ObjetoConsulta.AgregarConsultas);
+router.post('/app/sugerencias', ObjetoConsulta.AgregarConsultas);
 router.post('/app/lugares', ObjetoLugares.AgregarSucursal);
 router.post('/app/historiales', ObjetoHistorial.guardarHistorial);
 router.post('/app/secciones', ObjetoManual.AgregarSeccion);
