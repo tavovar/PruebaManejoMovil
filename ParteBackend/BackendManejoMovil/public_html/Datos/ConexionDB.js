@@ -56,7 +56,7 @@ ConexionDB = function () {
     this.getDatosSinInyection = function (pQuery, pDato, callBack) {
         console.log("Realizando un request" + pQuery);
         pool.getConnection(function (err, connection) {
-            connection.query(pQuery, [pDato], function (err, rows) {
+            connection.query(pQuery, pDato, function (err, rows) {
                 if (err) {
                     console.log(err);
                 } else {

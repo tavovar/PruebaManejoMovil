@@ -59,7 +59,7 @@ var router = express.Router();
 
 //GETS
 
-router.get('/app/preguntas', ObjetoPregunta.ObtenerPreguntasTeoricas);
+router.get('/app/preguntas', ObjetoPregunta.ObtenerPreguntaTeorica);
 router.get('/app/preguntas_dinamicas', ObjetoPregunta.ObtenerPreguntaDinamica);
 router.get('/app/lugares', ObjetoLugares.ObtenerLugaresSucursales);
 router.get('/app/historiales', ObjetoHistorial.ObtenerHistorial);

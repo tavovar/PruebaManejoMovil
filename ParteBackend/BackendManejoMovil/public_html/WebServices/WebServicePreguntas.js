@@ -17,10 +17,24 @@ WebServicePregunta = function () {
     var Constantes = require('../Constantes/Constantes.js');
     var ObjetoConstantes = new Constantes.Constantes();
 
-    this.ObtenerPreguntasTeoricas = function (req, res) {
+    this.ObtenerPreguntaTeorica = function (req, res) {
         console.log("Realizando un request");
-
-        admin.getPreguntas(1, function (data) {
+        var pk_usuario = req.query.pk_usuario;
+        if (pk_usuario === undefined || pk_usuario === '') {
+            servidor.responderJson(res, {"error": -1});
+            return;
+        }
+        var numero_pregunta = req.query.numero_pregunta;
+        if (numero_pregunta === undefined || numero_pregunta === '') {
+            servidor.responderJson(res, {"error": -1});
+            return;
+        }
+        var fk_manual = req.query.fk_manual;
+        if (fk_manual === undefined || fk_manual === '') {
+            servidor.responderJson(res, {"error": -1});
+            return;
+        }
+        admin.getPreguntas(pk_usuario, numero_pregunta, fk_manual, function (data) {
             servidor.responderJson(res, data);
         });
     };
@@ -82,12 +96,12 @@ WebServicePregunta = function () {
             servidor.responderJson(res, data);
         });
     };
-    
+
     this.ObtenerPreguntaDinamica = function (req, res) {
         var pk_usuario = req.query.pk_usuario;
         var numero_pregunta = req.query.numero_pregunta;
         if (pk_usuario === undefined || pk_usuario === '' ||
-                numero_pregunta === undefined || numero_pregunta === '' ) {
+                numero_pregunta === undefined || numero_pregunta === '') {
             servidor.responderJson(res, {"error": -1});
             return;
         }
