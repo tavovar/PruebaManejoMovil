@@ -15,7 +15,7 @@ function identificacionWeb() {
             document.location = "AdminPreguntas.html";
         }
         else {
-            alert("Usuario o contraseña incorrecta" + data );
+            alert("Usuario o contraseña incorrecta" );
         }
     });
 

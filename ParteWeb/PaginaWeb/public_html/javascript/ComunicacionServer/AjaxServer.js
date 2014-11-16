@@ -13,15 +13,19 @@ function HacerGet(pUrl, pData, pFuncion) {
 }
 
 function HacerDelete(pUrl, pData, pFuncion) {
-    //SolicitudAjax("DELETE", pUrl, pData, pFuncion);
-    $.ajax({
-        url: pUrl,
-        type: 'DELETE',
-        success: pFuncion
-    });
+    SolicitudAjax("DELETE", pUrl, pData, pFuncion);
+//    $.ajax({
+//        url: pUrl,
+//        type: 'DELETE',
+//        success: pFuncion
+//    });
 }
 
 function SolicitudAjax(pTipoMetodo, pUrl, pData, pFuncion) {
+    if (pData === null || pData === undefined || pData === ""){
+        pData = {};
+    }
+    pData["identificacion"] = "Esta es la clave de la solicitud";
     $.ajax({
         type: pTipoMetodo,
         url: pUrl,
