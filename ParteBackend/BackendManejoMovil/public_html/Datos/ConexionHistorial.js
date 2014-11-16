@@ -17,13 +17,10 @@ var ConexionHistorial = function () {
         mConexion.getDatos("select * from historiales where fk_usuario="+pIdUsuario, callback);
     };
 
-    this.agregarHistorial = function (pIdUsuario, pObjeto, callback) {
-
-        var mObjeto = {preguntas_correctas: pObjeto.preguntas_correctas, fecha: pObjeto.fecha, fk_usuario: pObjeto.fk_usuario, tipo: pObjeto.tipo};
-        
+    this.agregarHistorial = function (pObjeto, callback) {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
-        mConexion.saveDato("INSERT INTO historiales SET ?", mObjeto, callback);
+        mConexion.saveDato("INSERT INTO historiales SET ?", pObjeto, callback);
 
     };
     

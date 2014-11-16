@@ -14,8 +14,9 @@ var AdminHistorial = function () {
         this.ConHistorial.getTodoHistorial(pIdUsuario, callback);
     };
 
-    this.agregarHistorial = function (pIdUsuario, pObjeto, callback) {
-        this.ConHistorial.agregarHistorial(pIdUsuario, pObjeto, callback);
+    this.agregarHistorial = function (pObjeto, callback) {
+        var mObjeto = {tipo: pObjeto.tipo, preguntas_correctas: pObjeto.preguntas_correctas, fk_usuario: pObjeto.fk_usuario, fecha:pObjeto.fecha};
+        this.ConHistorial.agregarHistorial(pObjeto, callback);
     };
 
 };
