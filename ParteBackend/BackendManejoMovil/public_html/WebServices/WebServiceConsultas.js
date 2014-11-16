@@ -11,6 +11,12 @@ var servidor = require('./Servidor.js');
 WebServiceConsulta = function () {
     var admin = new adminConsulta.AdminConsulta();
 
+    this.AgregarConsultas = function (req, res) {
+        admin.agregarConsulta(req.body.Json, function (data) {
+            servidor.responderJson(res, data);
+        });
+    };
+
     this.ObtenerConsultas = function (req, res) {
         admin.getTodasConsultas(function (data) {
             servidor.responderJson(res, data);

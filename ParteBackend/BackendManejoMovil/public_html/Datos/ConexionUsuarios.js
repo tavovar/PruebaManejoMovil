@@ -12,20 +12,16 @@ var ConexionUsuarios = function () {
     this.conexion = null;
 
     this.agregarUsuario = function (pObjeto, callback) {
-        var mObjeto = {pk_id: pObjeto.pk_id, tipo_usuario: pObjeto.tipo_usuario};
-        
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
-        mConexion.saveDato("INSERT INTO usuarios SET ?", mObjeto, callback);
+        mConexion.saveDato("INSERT INTO usuarios SET ?", pObjeto, callback);
     };
     
     this.existeUsuario = function (pObjeto, callback) {
-        var mObjeto = {pk_id: pObjeto.pk_id, tipo_usuario: pObjeto.tipo_usuario};
-        
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
-        var query = "SELECT * FROM usuarios WHERE pk_id="+mObjeto.pk_id;
-        mConexion.getDatos(query, callback);
+        var query = "SELECT * FROM usuarios WHERE pk_red_social = ? AND tipo_usuario = ?";
+        mConexion.getDatosSinInyection(query, [pObjeto.id_red_social, pObjeto.tipo_usuario], callback);
     };
 
 };

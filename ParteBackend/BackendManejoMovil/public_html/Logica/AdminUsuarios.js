@@ -7,8 +7,8 @@ var Constantes = require('../Constantes/Constantes.js');
 
 
 AdminUsuarios = function () {
-    var conexionPreguntas = require('../Datos/ConexionPreguntas.js');
-    this.ConPreguntas = new conexionPreguntas.ConexionPreguntas();
+    var conexionUsuarios = require('../Datos/ConexionUsuarios.js');
+    this.ConUsuarios = new conexionUsuarios.ConexionUsuarios();
 
     var ObjetoConstantes = new Constantes.Constantes();
 
@@ -20,6 +20,22 @@ AdminUsuarios = function () {
         else{
             return false;
         }
+    };
+    
+    this.registraUsuario = function(pObjeto, pFuncion){
+        if (pObjeto.tipo_usuario===undefined){
+            pObjeto = JSON.parse(pObjeto);
+        }
+        var mObjeto = {tipo_usuario:pObjeto.tipo_usuario, id_usuario: pObjeto.id_red_social};
+        this.ConUsuarios.agregarUsuario(mObjeto, pFuncion);
+    };
+    
+    this.IdentificarUsuarioApp = function(pObjeto, pFuncion){
+        if (pObjeto.tipo_usuario===undefined){
+            pObjeto = JSON.parse(pObjeto);
+        }
+        var mObjeto = {tipo_usuario:pObjeto.tipo_usuario, id_usuario: pObjeto.id_red_social};
+        this.ConUsuarios.existeUsuario(mObjeto, pFuncion);
     };
 };
 

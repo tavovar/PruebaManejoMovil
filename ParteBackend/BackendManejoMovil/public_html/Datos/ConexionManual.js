@@ -47,7 +47,7 @@ var ConexionManuales = function () {
     this.getSubSecciones = function (pIdSeccion, callback) {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
-        var query = "select pk_subseccion, nombre, indice from subsecciones WHERE fk_seccion=" + pIdSeccion;
+        var query = "select pk_subseccion, nombre, indice, descripcion from subsecciones WHERE fk_seccion=" + pIdSeccion;
         mConexion.getDatos(query, callback);
     };
     

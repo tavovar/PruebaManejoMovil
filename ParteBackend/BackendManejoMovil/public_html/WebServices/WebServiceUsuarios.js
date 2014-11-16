@@ -9,17 +9,33 @@ var servidor = require('./Servidor.js');
 
 WebServiceUsuario = function () {
     var admin = new adminUsuarios.AdminUsuarios();
-    
+
     this.IdentificarseWeb = function (req, res) {
         console.log(req.body.nombre);
         console.log(req.body.contrasena);
-        if (admin.identificacionWeb(req.body.nombre, req.body.contrasena)===true){
+        if (admin.identificacionWeb(req.body.nombre, req.body.contrasena) === true) {
             servidor.responderJson(res, true);
         }
-        else{
+        else {
             servidor.responderJson(res, false);
         }
-        
+    };
+
+    this.RegistrarUsuario = function (req, res) {
+        admin.registraUsuario(req.body.Json, function (pFilas) {
+            servidor.responderJson(pFilas, false);
+        });
+    };
+
+    this.IdentificarUsuarioApp = function (req, res) {
+        admin.IdentificarUsuarioApp(req.body.Json, function (pFilas) {
+            if (pFilas.length === 0) {
+                servidor.responderJson(res, true);
+            }
+            else {
+                servidor.responderJson(pFilas, false);
+            }
+        });
     };
 };
 

@@ -10,6 +10,12 @@ var ConexionConsulta = function () {
 
     this.conexion = null;
 
+    this.agregarConsulta = function (pObjeto, callback) {
+        var mConexion = new conexionDB.ConexionDB();
+        mConexion.conectar();
+        mConexion.saveDato("select pk_consultas, asunto, descripcion, resuelto from consultas",pObjeto, callback);
+    };
+
     this.getTodasConsultas = function (callback) {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
