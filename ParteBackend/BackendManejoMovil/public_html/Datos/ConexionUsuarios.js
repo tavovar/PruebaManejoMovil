@@ -20,7 +20,7 @@ var ConexionUsuarios = function () {
     this.existeUsuario = function (pObjeto, callback) {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
-        var query = "SELECT * FROM usuarios WHERE pk_red_social = ? AND tipo_usuario = ?";
+        var query = "SELECT * FROM usuarios WHERE id_red_social = ? AND tipo_usuario = ?";
         mConexion.getDatosSinInyection(query, [pObjeto.id_red_social, pObjeto.tipo_usuario], callback);
     };
 

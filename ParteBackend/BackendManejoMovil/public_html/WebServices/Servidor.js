@@ -41,12 +41,34 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(methodOverride());
 
+function VerificarProcedencia(req) {
+    var mId = req.body.identificacion;
+    console.log(mId);
+    if (req.method === "GET" || req.method === "DELETE") {
+        mId = req.query.identifiacion;
+        mId = ObjetoConstantes.identificacion;
+    }
+    console.log(mId);
+    if ((mId !== undefined && mId === ObjetoConstantes.identificacion)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.header("Access-Control-Allow-Headers", "Content-Type");
     res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
-    next();
+
+    if (VerificarProcedencia(req)) {
+        next();
+    }
+    else {
+        responderJson(res, {error: "Error al verificar la autentificación de la aplicación"});
+    }
 });
 
 var router = express.Router();
@@ -111,13 +133,15 @@ router.delete('/web/preguntas_dinamicas', ObjetoPregunta.EliminarPreguntaDinamic
 router.delete('/web/consulta', ObjetoConsulta.EliminarConsulta);
 router.delete('/web/manuales', ObjetoManual.EliminarManual);
 
-app.all('/', function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.header("Access-Control-Allow-Headers", "Content-Type");
-    res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
-    next();
-});
+//app.all('/', function (req, res, next) {
+//    res.header("Access-Control-Allow-Origin", "*");
+//    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//    res.header("Access-Control-Allow-Headers", "Content-Type");
+//    res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
+//    //next();
+//    
+//    responderJson(res, {error: "Error al verificar la autentificación de la aplicación"}); 
+//});
 
 app.use(router);
 
@@ -127,8 +151,6 @@ app.listen(8080, function () {
 
 
 function responderJson(res, dataJson) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     if (dataJson === null) {
         res.send({"error": -1});
     }
@@ -176,7 +198,4 @@ http.createServer(function (request, response) {
 
 console.log('Server running at http://127.0.0.1:8125/');
 
-//var connect = require('connect');
-//var serveStatic = require('serve-static');
-//connect().use(serveStatic(UbicacionServer)).listen(8080);
 
