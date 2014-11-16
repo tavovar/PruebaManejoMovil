@@ -8,7 +8,7 @@ var Constantes = function(){
     this.UsuarioWeb="admin";
     this.Password="adminadmin";
     
-    this.identificacion="Esta es la clave de la solicitud";
+    this.identificacion="a7b3e20c2c626aee9bc63cd4997f7624";
     
     this.UbicacionImagenes = "C:/Users/GoTouch/Pictures/";
     this.UbicacionServidorWeb = "C:/Users/GoTouch/github/PruebaManejoMovil/ParteWeb/PaginaWeb/public_html";
