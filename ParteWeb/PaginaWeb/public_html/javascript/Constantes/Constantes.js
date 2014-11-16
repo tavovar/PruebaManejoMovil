@@ -23,7 +23,7 @@ var kNombreConsultas = prefijoWeb + "consultas";
 var kNombreConsulta = prefijoWeb + "consulta";
 var kNombreUsuarios = prefijoWeb + "usuariosweb";
 
-var kPassIdentificacion = "a7b3e20c2c626aee9bc63cd4997f7624"
+var kPassIdentificacion = "a7b3e20c2c626aee9bc63cd4997f7624";
 
 //Autentificacion de la pagina web
 

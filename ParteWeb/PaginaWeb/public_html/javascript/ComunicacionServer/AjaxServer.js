@@ -25,7 +25,7 @@ function SolicitudAjax(pTipoMetodo, pUrl, pData, pFuncion) {
     if (pData === null || pData === undefined || pData === ""){
         pData = {};
     }
-    pData["identificacion"] = Constantes.kPassIdentificacion;
+    pData["identificacion"] = kPassIdentificacion;
     $.ajax({
         type: pTipoMetodo,
         url: pUrl,

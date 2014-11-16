@@ -43,12 +43,10 @@ app.use(methodOverride());
 
 function VerificarProcedencia(req) {
     var mId = req.body.identificacion;
-    console.log(mId);
     if (req.method === "GET" || req.method === "DELETE") {
-        mId = req.query.identifiacion;
+        //mId = req.query.identifiacion;
         mId = ObjetoConstantes.identificacion;
     }
-    console.log(mId);
     if ((mId !== undefined && mId === ObjetoConstantes.identificacion)) {
         return true;
     }
@@ -132,16 +130,6 @@ router.delete('/web/preguntas', ObjetoPregunta.EliminarPregunta);
 router.delete('/web/preguntas_dinamicas', ObjetoPregunta.EliminarPreguntaDinamica);
 router.delete('/web/consulta', ObjetoConsulta.EliminarConsulta);
 router.delete('/web/manuales', ObjetoManual.EliminarManual);
-
-//app.all('/', function (req, res, next) {
-//    res.header("Access-Control-Allow-Origin", "*");
-//    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-//    res.header("Access-Control-Allow-Headers", "Content-Type");
-//    res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
-//    //next();
-//    
-//    responderJson(res, {error: "Error al verificar la autentificación de la aplicación"}); 
-//});
 
 app.use(router);
 
