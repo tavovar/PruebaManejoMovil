@@ -15,7 +15,21 @@ var AdminConsulta = function () {
         if (pObjeto!== undefined && pObjeto.correo === undefined){
             pObjeto = JSON.parse(pObjeto);
         }
-        var mObjeto = {correo: pObjeto.correo, asunto:pObjeto.asunto, descripcion:pObjeto.descripcion, resuelto:0, fk_usuario:pObjeto.fk_usuario}
+        
+        var descripcion = pObjeto.descripcion;
+        
+        if (pObjeto.respuesta === "0"){
+            descripcion += " \n \n No deseo recibir respuesta ";
+        }
+        
+        if (pObjeto.respuesta === "0"){
+            descripcion += " \n \n No deseo recibir respuesta ";
+        }
+        else{
+            descripcion += " \n \n Deseo recibir respuesta ";
+        }
+        
+        var mObjeto = {correo: pObjeto.correo, asunto: "Consulta", descripcion:descripcion, resuelto:0, fk_usuario:pObjeto.fk_usuario};
         this.ConConsulta.agregarConsulta(mObjeto, callback);
     };
 
