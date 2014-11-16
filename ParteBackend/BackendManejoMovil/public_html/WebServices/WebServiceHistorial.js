@@ -25,8 +25,6 @@ WebServiceHistorial = function () {
         console.log(req.body.Json);
         servidor.responderJson(res, "Hola");
     };
-
-
 };
 
 exports.WebServiceHistorial = WebServiceHistorial;

@@ -26,7 +26,7 @@ AdminManual = function () {
     };
 
     this.agregarSeccion = function (pObjeto, callback) {
-        var mObjeto = {nombre: pObjeto.nombre, fk_manual: pObjeto.fk_manual};
+        var mObjeto = {nombre: pObjeto.nombre, fk_manual: pObjeto.fk_manual, indice:pObjeto.indice};
         this.ConManuales.agregarSeccion(mObjeto, callback);
     };
 
@@ -35,7 +35,7 @@ AdminManual = function () {
     };
 
     this.agregarSubseccion = function (pObjeto, callback) {
-        var mObjeto = {nombre: pObjeto.nombre, descripcion: pObjeto.descripcion, fk_seccion: parseInt(pObjeto.fk_seccion)};
+        var mObjeto = {nombre: pObjeto.nombre, descripcion: pObjeto.descripcion, fk_seccion: pObjeto.fk_seccion, indice:pObjeto.indice};
         this.ConManuales.agregarSubseccion(mObjeto, callback);
     };
 
@@ -51,8 +51,8 @@ AdminManual = function () {
         this.ConManuales.borrarSeccion(pIdSeccion, callback);
     };
 
-    this.borrarSeccion = function (pIdSubseccion, callback) {
-        this.ConManuales.borrarSeccion(pIdSubseccion, callback);
+    this.borrarSubseccion = function (pIdSubseccion, callback) {
+        this.ConManuales.borrarSubseccion(pIdSubseccion, callback);
     };
 
 };

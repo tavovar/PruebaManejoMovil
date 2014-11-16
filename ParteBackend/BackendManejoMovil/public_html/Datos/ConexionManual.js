@@ -33,7 +33,7 @@ var ConexionManuales = function () {
     this.getSecciones = function (pIdManual, callback) {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
-        var query = "select pk_seccion, nombre from secciones WHERE fk_manual=" + pIdManual;
+        var query = "select pk_seccion, nombre, indice from secciones WHERE fk_manual=" + pIdManual;
         mConexion.getDatos(query, callback);
     };
     
@@ -47,7 +47,7 @@ var ConexionManuales = function () {
     this.getSubSecciones = function (pIdSeccion, callback) {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
-        var query = "select pk_subseccion, nombre from subsecciones WHERE fk_seccion=" + pIdSeccion;
+        var query = "select pk_subseccion, nombre, indice from subsecciones WHERE fk_seccion=" + pIdSeccion;
         mConexion.getDatos(query, callback);
     };
     
@@ -60,7 +60,7 @@ var ConexionManuales = function () {
     this.getSubSeccion = function (pIdSubSeccion, callback) {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
-        var query = "select pk_subseccion, nombre, descripcion from subsecciones WHERE pk_subseccion=" + pIdSubSeccion;
+        var query = "select pk_subseccion, nombre, descripcion, indice from subsecciones WHERE pk_subseccion=" + pIdSubSeccion;
         mConexion.getDatos(query, callback);
     };
     
@@ -78,7 +78,7 @@ var ConexionManuales = function () {
         mConexion.getDatosSinInyection(query, pIdSeccion, callback);
     };
     
-    this.borrarSeccion = function (pIdSubseccion, callback) {
+    this.borrarSubseccion = function (pIdSubseccion, callback) {
         var mConexion = new conexionDB.ConexionDB();
         mConexion.conectar();
         var query = "DELETE FROM subsecciones WHERE pk_subseccion = ?";

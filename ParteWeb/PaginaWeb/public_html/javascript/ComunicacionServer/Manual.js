@@ -60,18 +60,21 @@ function addSeccion() {
     var mNombre = document.getElementById("txtNom").value;
     var dropDownList = document.getElementById("dpManualesAgregados");
     var mIdManual = dropDownList.options[dropDownList.selectedIndex].value;
-
-    if (mNombre.trim() === "") {
-        alert("No ha introducido ningun nombre");
+    var mIndice = document.getElementById("txtIndice").value;
+            
+    if (mNombre.trim() === "" || mIndice.trim() === "") {
+        alert("No deje espacios vacíos");
         return;
     }
+    parseInt(mIndice);
     
-     alert("Enviando la solicitud");
+    alert("Enviando la solicitud");
 
-    var mData = {"nombre": mNombre, "fk_manual": mIdManual};
+    var mData = {"nombre": mNombre, "fk_manual": mIdManual, "indice":mIndice};
     HacerPost(kNombreServidor + kNombreSecciones, mData, function (data) {
         alert("Sección agregada");
         document.getElementById("txtNom").value = "";
+        document.getElementById("txtIndice").value = "";
         CargarElementosSecciones();
     });
 }
@@ -84,18 +87,22 @@ function addSubSeccion() {
     var dropDownList = document.getElementById("dpSeccionesAgregados");
     var mIdSeccion = dropDownList.options[dropDownList.selectedIndex].value;
 
-    if (mNombre.trim() === "" || mDescripcion.trim() === "") {
+    var mIndice = document.getElementById("txtIndice").value;
+
+    if (mNombre.trim() === "" || mDescripcion.trim() === "" || mIndice.trim() === "") {
         alert("No deje ningún espacio vacío");
         return;
     }
+    parseInt(mIndice);
     
     alert("Enviando la solicitud");
 
-    var mData = {"nombre": mNombre, "fk_seccion": mIdSeccion, "descripcion": mDescripcion};
+    var mData = {"nombre": mNombre, "fk_seccion": mIdSeccion, "descripcion": mDescripcion, "indice":mIndice};
     HacerPost(kNombreServidor + kNombreSubsecciones, mData, function (data) {
         alert("Subsección agregada");
         document.getElementById("txtNombre").value = "";
         document.getElementById("txtDescripcion").value = "";
+        document.getElementById("txtIndice").value = "";
         CargarElementosSubsecciones();
     });
 }

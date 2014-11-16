@@ -2,3 +2,12 @@
 use mydb;
 
 ALTER TABLE preguntas_dinamicas ADD velocidad INT;
+
+use mydb;
+
+
+
+ALTER TABLE secciones ADD indice INT;
+
+
+ALTER TABLE subsecciones ADD indice INT;

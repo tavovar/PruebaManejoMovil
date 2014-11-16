@@ -110,7 +110,7 @@ WebServiceManual = function () {
             servidor.responderJson(res, {"error": -1});
             return;
         }
-        admin.borrarSeccion(pk_subseccion, function (data) {
+        admin.borrarSubseccion(pk_subseccion, function (data) {
             servidor.responderJson(res, data);
         });
     };

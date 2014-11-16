@@ -36,6 +36,5 @@ if (document.location.pathname.split('/').pop() !== "index.html") {
 
 function CerrarSesion() {
     localStorage.setItem("Autentificado", 0);
-
     document.location = "index.html";
 }
