@@ -18,8 +18,6 @@ import com.example.neyrojas.pmm.Logica.testTeorico;
 
 public class Preguntas extends Activity {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,11 +59,5 @@ public class Preguntas extends Activity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
-
-
-
-
-
 
 }

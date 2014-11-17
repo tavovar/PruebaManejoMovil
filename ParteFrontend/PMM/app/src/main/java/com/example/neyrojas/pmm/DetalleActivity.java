@@ -6,25 +6,41 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-
 
 public class DetalleActivity extends Activity {
 
     private double Lat;
     private double Lng;
     private String Nom;
+    private String Tel;
+    private String Des;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
         Nom = getIntent().getStringExtra("Nombre");
+        Tel = getIntent().getStringExtra("Telefono");
+        Des = getIntent().getStringExtra("Lugar");
         Lat = getIntent().getDoubleExtra("Lat", 10.000000);
         Lng = getIntent().getDoubleExtra("Lng", -84.000000);
-        TextView titulo = (TextView)findViewById(R.id.nombreLugar);
-        TextView descripcion = (TextView)findViewById(R.id.descripcion);
+        TextView titulo = (TextView) findViewById(R.id.nombreLugar);
+        TextView descripcion = (TextView) findViewById(R.id.descripcion);
         titulo.setText(Nom);
-        descripcion.setText("Plantel de: "+Nom);
+        descripcion.setText("Direccion: " + Des + ", contacte al: " + Tel);
+
+        //Toast.makeText(getApplicationContext(),"Lat: " +
+        //        Lat + " y Long: " + Lng, Toast.LENGTH_LONG).show();
+
+        Button btnMapa = (Button)findViewById(R.id.btnMap);
+        btnMapa.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                callMap(v, Lat, Lng);
+            }
+        });
+
     }
 
 
@@ -47,11 +63,10 @@ public class DetalleActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void callMap(View view) {
+    public void callMap(View view, double pLat, double pLng) {
         Intent intent = new Intent(this, lugarActivity.class);
-        intent.putExtra("Nombre", Nom);
-        intent.putExtra("Lat", Lat);
-        intent.putExtra("Lng", Lng);
+        intent.putExtra("Lat", pLat);
+        intent.putExtra("Lng", pLng);
         startActivity(intent);
     }
 }

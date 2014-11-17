@@ -9,6 +9,24 @@
     tools:context=".MainActivity"
     android:gravity="top|center_horizontal">
 
+    <AutoCompleteTextView
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:inputType="textAutoComplete"
+        android:hint="@string/buscar"
+        android:ems="15"
+        android:id="@+id/buscarText"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSearch"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/icon_search" />
+
     <ListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -16,6 +34,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="false"
         android:layout_alignParentStart="true"
-        style="@style/RedText" />
+        style="@style/RedText"
+        android:layout_below="@+id/buscarText" />
 
 </RelativeLayout>

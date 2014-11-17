@@ -73,7 +73,8 @@
             android:background="@drawable/buscar"
             android:layout_alignLeft="@+id/lbl_numeroPregunta"
             android:layout_alignStart="@+id/lbl_numeroPregunta"
-            android:layout_gravity="right" />
+            android:layout_gravity="right"
+            android:onClick="consultarManual" />
     </LinearLayout>
 
     <LinearLayout

@@ -2,7 +2,7 @@ package com.example.neyrojas.pmm;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.content.Intent;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -53,6 +53,9 @@ public class lugarActivity extends FragmentActivity {
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
                 setUpMap();
+            }
+            else {
+                Toast.makeText(getApplicationContext(),"ERROR: no se pudo obtener el mapa", Toast.LENGTH_LONG).show();
             }
         }
     }

@@ -1,0 +1,137 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.neyrojas.pmm.PreguntasPracticas">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="right">
+
+        <TextView
+            style="@style/RedText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/numeroPregunta1"
+            android:id="@+id/textView"
+            android:textStyle="bold|italic"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/linearLayout"
+            android:layout_alignEnd="@+id/linearLayout" />
+
+        <TextView
+            style="@style/GreenText"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="##"
+            android:id="@+id/lbl_numPreguntaPractica"
+            android:textSize="30dp"
+            android:textStyle="bold|italic"
+            android:layout_below="@+id/lbPregunta1"
+            android:layout_alignRight="@+id/lbPregunta1"
+            android:layout_alignEnd="@+id/lbPregunta1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/tiempo"
+            android:id="@+id/textView2"
+            android:layout_below="@+id/lbl_velocidad"
+            android:layout_alignLeft="@+id/img_derecha"
+            android:layout_alignStart="@+id/img_derecha" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/lbl_tiempo"
+            style="@style/GreenText"
+            android:singleLine="false"
+            android:textSize="45dp"
+            android:text="0" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentStart="true"
+        android:weightSum="1">
+
+        <Button
+            android:layout_width="114dp"
+            android:layout_height="wrap_content"
+            android:text="@string/freno"
+            android:id="@+id/btn_freno"
+            android:background="@drawable/rojo"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:onClick="bajarVelocidad" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/img_senalTestPractico"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/logo" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/img_izquierda"
+            android:src="@drawable/izq"
+            android:layout_alignTop="@+id/img_derecha"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/btn_freno"
+            android:layout_alignEnd="@+id/btn_freno" />
+
+        <Button
+            android:layout_width="121dp"
+            android:layout_height="wrap_content"
+            android:text="@string/acelerador"
+            android:id="@+id/btn_acelerador"
+            android:background="@drawable/estilos"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:onClick="aumentarVeocidad" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/img_derecha"
+            android:src="@drawable/der"
+            android:layout_toStartOf="@+id/btn_acelerador"
+            android:layout_above="@+id/btn_acelerador"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="100 Kmh"
+            android:id="@+id/lbl_velocidad"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            style="@style/GreenText" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -6,10 +6,6 @@ package com.example.neyrojas.pmm.Modelos;
 public class Respuesta {
     public String respuesta;
     public boolean correcta = false;
-
-
     public Respuesta(){
-
     }
-
 }

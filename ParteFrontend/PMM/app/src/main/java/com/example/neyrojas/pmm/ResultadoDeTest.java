@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,8 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.neyrojas.pmm.Constantes.Constantes;
+import com.example.neyrojas.pmm.Logica.testPractico;
 import com.example.neyrojas.pmm.Logica.testTeorico;
-
 
 public class ResultadoDeTest extends Activity {
 
@@ -24,22 +26,44 @@ public class ResultadoDeTest extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultado_de_test);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
     }
 
     @Override
     public void onStart(){
         super.onStart();
-        testTeorico test = testTeorico.getInstance();
-        ((TextView) findViewById(R.id.lbl_correctas)).setText(""+test.preguntasCorrectas);
-        ((TextView) findViewById(R.id.lbl_incorrectas)).setText(""+(Constantes.maximoNumPregTestTeo-test.preguntasCorrectas));
-        if(test.preguntasCorrectas>Constantes.numMiniPregNotaAprov){
-            ((TextView) findViewById(R.id.lbl_resultado)).setText(R.string.aprobado);
-            ((ImageView) findViewById(R.id.img_resultado)).setImageResource(R.drawable.felicidades);
-            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v.vibrate(Constantes.tiempoVibracionAprovado, -1);
+        int tipo = getIntent().getIntExtra("TipoTest", 0);
+        if(tipo == Constantes.tipoTeorico) {
+            testTeorico test = testTeorico.getInstance();
+            ((TextView) findViewById(R.id.lbl_correctas)).setText("" + test.preguntasCorrectas);
+            ((TextView) findViewById(R.id.lbl_incorrectas)).setText("" + (Constantes.maximoNumPregTestTeo - test.preguntasCorrectas));
+            float resultado = (test.preguntasCorrectas * 1.0f) / (Constantes.maximoNumPregTestTeo * 1.0f) * 100;
+            Log.v("Nota", resultado + "");
+            test.guardarResultadosTestTeorico();
+            ((TextView) findViewById(R.id.lbl_NotaResultado)).setText((String.format("%.2f", resultado)) + "%");
+            if (test.preguntasCorrectas > Constantes.numMiniPregNotaAprov) {
+                ((TextView) findViewById(R.id.lbl_resultado)).setText(R.string.aprobado);
+                Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                v.vibrate(Constantes.tiempoVibracionAprovado, -1);
+            } else {
+                ((TextView) findViewById(R.id.lbl_resultado)).setText(R.string.reprobado);
+            }
         }else{
-            ((TextView) findViewById(R.id.lbl_resultado)).setText(R.string.reprobado);
-            ((ImageView) findViewById(R.id.img_resultado)).setImageResource(R.drawable.reprovastes);
+            testPractico test = testPractico.getInstance();
+            ((TextView) findViewById(R.id.lbl_correctas)).setText("" + test.preguntasCorrectas);
+            ((TextView) findViewById(R.id.lbl_incorrectas)).setText("" + (Constantes.maximoNumPregTestPractico - test.preguntasCorrectas));
+            float resultado = (test.preguntasCorrectas * 1.0f) / (Constantes.maximoNumPregTestPractico * 1.0f) * 100;
+            Log.v("Nota", resultado + "");
+            test.guardarResultadosTestPractico();
+            ((TextView) findViewById(R.id.lbl_NotaResultado)).setText((String.format("%.2f", resultado)) + "%");
+            if (test.preguntasCorrectas > Constantes.maximoNumPregTestPractico) {
+                ((TextView) findViewById(R.id.lbl_resultado)).setText(R.string.aprobado);
+                Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                v.vibrate(Constantes.tiempoVibracionAprovado, -1);
+            } else {
+                ((TextView) findViewById(R.id.lbl_resultado)).setText(R.string.reprobado);
+            }
         }
     }
 
@@ -47,6 +71,8 @@ public class ResultadoDeTest extends Activity {
     public void terminarTestTeorico(View view){
         testTeorico test = testTeorico.getInstance();
         test.reiniciarTestTeorico();
+        testPractico test1 = testPractico.getInstance();
+        test1.reiniciarTestTeorico();
         finish();
     }
 
@@ -55,6 +81,8 @@ public class ResultadoDeTest extends Activity {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
             testTeorico test = testTeorico.getInstance();
             test.reiniciarTestTeorico();
+            testPractico test1 = testPractico.getInstance();
+            test1.reiniciarTestTeorico();
             finish();
             // Esto es lo que hace mi botón al pulsar ir a atrás
             //Toast.makeText(getApplicationContext(), "Voy hacia atrás!!",Toast.LENGTH_SHORT).show();
