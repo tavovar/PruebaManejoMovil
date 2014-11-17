@@ -33,13 +33,22 @@ $('#eventForm').submit(function (e) {
     alert("Enviando solicitud");
 
     var fd = new FormData($(this)[0]);
-
-    HacerPost(kNombreServidor + kNombrePreguntasDinamicas, fd, function (data) {
-        alert("Pregunta Dinámica Agregada");
-        document.getElementById("correcta").value = "";
-        document.getElementById("ipImagen").value = "";
-        $('#imMuestra').attr('src', "");
-        CargarPreguntasDinamicas();
+    
+    fd["identificacion"] = kPassIdentificacion;
+   
+    $.ajax({
+        url: kNombreServidor + kNombrePreguntasDinamicas,
+        data: fd,
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        success: function (data) {
+            alert("Pregunta Dinámica Agregada");
+            document.getElementById("correcta").value = "";
+            document.getElementById("ipImagen").value = "";
+            $('#imMuestra').attr('src', "");
+            CargarPreguntasDinamicas();
+        }
     });
 });
 

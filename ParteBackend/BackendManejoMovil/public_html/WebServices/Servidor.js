@@ -43,8 +43,12 @@ app.use(methodOverride());
 
 function VerificarProcedencia(req) {
     var mId = req.body.identificacion;
+    console.log(req.url);
     if (req.method === "GET" || req.method === "DELETE") {
         //mId = req.query.identifiacion;
+        mId = ObjetoConstantes.identificacion;
+    }
+    if (req.method === "POST" && req.url === "/web/preguntas_dinamicas"){
         mId = ObjetoConstantes.identificacion;
     }
     if ((mId !== undefined && mId === ObjetoConstantes.identificacion)) {
