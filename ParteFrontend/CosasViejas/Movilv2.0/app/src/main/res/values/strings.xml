@@ -42,5 +42,21 @@
     <string name="restriccionessugerencia">La sugerencia debe ser mínimo de 10 caracteres y el email de 8</string>
     <string name="title_activity_preguntas_practicas">PreguntasPracticas</string>
     <string name="title_activity_preguntas_instruciones">preguntasInstruciones</string>
+    <string name="freno">Freno</string>
+    <string name="tiempo">Tiempo</string>
+    <string name="acelerador">Acelerador</string>
+    <string name="correcto">Correcto</string>
+    <string name="incorrecto">Incorrecto</string>
+    <string name="todos">Todos</string>
+    <string name="semana">Semana</string>
+    <string name="mes">Mes</string>
+    <string name="nota">Nota</string>
+    <string name="tipo">Tipo</string>
+    <string name="fecha">Fecha</string>
+    <string name="title_activity_estadisticas">estadisticas</string>
+    <string name="title_activity_login">login</string>
+    <string name="app_id">581914115275994</string>
+    <string name="update_status">nose</string>
+    <string name="post_image">nose2</string>
 
 </resources>

@@ -1,8 +1,7 @@
 package com.example.gustavovargas.movilv20.Logica;
 
 import com.example.gustavovargas.movilv20.Constantes.Constantes;
-import com.example.gustavovargas.movilv20.Modelos.Pregunta;
-import com.example.gustavovargas.movilv20.Modelos.Respuesta;
+import com.example.gustavovargas.movilv20.Modelos.PreguntaTeorica;
 import com.example.gustavovargas.movilv20.Modelos.Usuario;
 import com.example.gustavovargas.movilv20.ParseJson.ConexionAPI;
 
@@ -13,7 +12,7 @@ import org.json.JSONException;
  */
 public class testTeorico {
 
-    private Pregunta pregunta;
+    private PreguntaTeorica pregunta;
     public int preguntaActual=-1;
     public boolean resultado;
     public int preguntasCorrectas;
@@ -29,16 +28,16 @@ public class testTeorico {
     }
 
     protected testTeorico(){
-        pregunta = test.solicitarPreguntasTeoricas();
+        pregunta = test.solicitarPreguntasTeoricas(0,Usuario.getInstance().id,Usuario.getInstance().pais);
         preguntaActual = -1;
         resultado = false;
         preguntasCorrectas = 0;
     }
 
 
-    public Pregunta SiguintePregunta(){
+    public PreguntaTeorica SiguintePregunta(){
         preguntaActual++;
-        pregunta = test.solicitarPreguntasTeoricas();
+        pregunta = test.solicitarPreguntasTeoricas(1,Usuario.getInstance().id,Usuario.getInstance().pais);
         if (preguntaActual< Constantes.maximoNumPregTestTeo){
             return pregunta;
         }else{
@@ -72,7 +71,7 @@ public class testTeorico {
 
     public void reiniciarTestTeorico(){
         ConexionAPI test = new ConexionAPI();
-        pregunta = test.solicitarPreguntasTeoricas();
+        pregunta = test.solicitarPreguntasTeoricas(0,Usuario.getInstance().id,Usuario.getInstance().pais);
         preguntaActual = -1;
         resultado = false;
         preguntasCorrectas = 0;

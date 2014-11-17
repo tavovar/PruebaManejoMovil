@@ -6,51 +6,74 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".Preguntas"
+            android:name=".Activity.Preguntas"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".PreguntasTeoricas"
+            android:name=".Activity.PreguntasTeoricas"
             android:label="@string/title_activity_preguntas_teoricas"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".ResultadoDeTest"
+            android:name=".Activity.ResultadoDeTest"
             android:label="@string/title_activity_resultado_de_test"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".menu"
+            android:name=".Activity.menu"
             android:label="@string/title_activity_menu"
             android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Activity.Sugerencias"
+            android:label="@string/title_activity_sugerencias"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Activity.PreguntasPracticas"
+            android:label="@string/title_activity_preguntas_practicas"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".Activity.preguntasInstruciones"
+            android:label="@string/title_activity_preguntas_instruciones"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".Activity.estadisticas"
+            android:label="@string/title_activity_estadisticas" >
+        </activity>
+        <activity
+            android:name=".Activity.Resultados"
+            android:label="@string/title_activity_resultados" >
+        </activity>
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".Activity.login"
+            android:label="@string/title_activity_login" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Sugerencias"
-            android:label="@string/title_activity_sugerencias"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".PreguntasPracticas"
-            android:label="@string/title_activity_preguntas_practicas"
-            android:screenOrientation="landscape" >
-        </activity>
-        <activity
-            android:name=".preguntasInstruciones"
-            android:label="@string/title_activity_preguntas_instruciones"
-            android:screenOrientation="landscape">
-        </activity>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id"/>
     </application>
 
 </manifest>
