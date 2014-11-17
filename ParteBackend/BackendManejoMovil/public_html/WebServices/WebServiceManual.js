@@ -115,5 +115,16 @@ WebServiceManual = function () {
         });
     };
 
+    this.BuscarTexto = function (req, res) {
+        var dato = req.query.dato;
+        if (dato === undefined || dato === '') {
+            servidor.responderJson(res, {"error": -1});
+            return;
+        }
+        admin.buscarTexto(dato, function (data) {
+            servidor.responderJson(res, data);
+        });
+    };
+
 };
 exports.WebServiceManual = WebServiceManual;

@@ -54,6 +54,10 @@ AdminManual = function () {
     this.borrarSubseccion = function (pIdSubseccion, callback) {
         this.ConManuales.borrarSubseccion(pIdSubseccion, callback);
     };
+    
+    this.buscarTexto = function (pTextoBusqueda, callback) {
+        this.ConManuales.buscarTexto(pTextoBusqueda, callback);
+    };
 
 };
 

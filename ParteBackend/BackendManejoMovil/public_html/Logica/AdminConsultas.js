@@ -15,14 +15,9 @@ var AdminConsulta = function () {
         if (pObjeto!== undefined && pObjeto.correo === undefined){
             pObjeto = JSON.parse(pObjeto);
         }
-        
         var descripcion = pObjeto.descripcion;
         
-        if (pObjeto.respuesta === "0"){
-            descripcion += " \n \n No deseo recibir respuesta ";
-        }
-        
-        if (pObjeto.respuesta === "0"){
+        if (pObjeto.respuesta === "0" || pObjeto.respuesta === 0){
             descripcion += " \n \n No deseo recibir respuesta ";
         }
         else{

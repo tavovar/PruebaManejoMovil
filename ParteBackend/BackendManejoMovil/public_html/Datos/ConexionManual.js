@@ -84,6 +84,14 @@ var ConexionManuales = function () {
         var query = "DELETE FROM subsecciones WHERE pk_subseccion = ?";
         mConexion.getDatosSinInyection(query, pIdSubseccion, callback);
     };
+    
+    this.buscarTexto = function (pTextoBuscar, callback){
+        var query = "select tSec.pk_seccion, tSec.indice, tSec.nombre from subsecciones tSub JOIN secciones tSec ON tSub.fk_seccion = tSec.pk_seccion where descripcion LIKE ?";
+        var mConexion = new conexionDB.ConexionDB();
+        pTextoBuscar = '%' + pTextoBuscar + '%';
+        mConexion.conectar();
+        mConexion.getDatosSinInyection(query, pTextoBuscar, callback);
+    };
 };
 
 exports.ConexionManuales = ConexionManuales;

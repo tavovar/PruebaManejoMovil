@@ -84,6 +84,7 @@ router.get('/app/lugares', ObjetoLugares.ObtenerLugaresSucursales);
 router.get('/app/historiales', ObjetoHistorial.ObtenerHistorial);
 router.get('/app/historiales_semanas', ObjetoHistorial.ObtenerHistorialSemanas);
 router.get('/app/historiales_meses', ObjetoHistorial.ObtenerHistorialMeses);
+router.get('/app/busqueda_texto', ObjetoManual.BuscarTexto);
 router.get('/app/manuales', ObjetoManual.ObtenerManuales);
 router.get('/app/secciones', ObjetoManual.ObtenerSecciones);
 router.get('/app/subsecciones', ObjetoManual.ObtenerSubsecciones);
